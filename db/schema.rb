@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_174909) do
+ActiveRecord::Schema.define(version: 2019_06_10_185254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "artists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "description"
+    t.string "instagram_username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_artists_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "photoable_type"
+    t.bigint "photoable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photoable_type", "photoable_id"], name: "index_photos_on_photoable_type_and_photoable_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "tattoo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["tattoo_id"], name: "index_taggings_on_tattoo_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tattoos", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_tattoos_on_artist_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +62,13 @@ ActiveRecord::Schema.define(version: 2019_06_10_174909) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "artists", "users"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "tattoos"
+  add_foreign_key "tattoos", "artists"
 end
