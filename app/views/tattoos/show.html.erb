@@ -1,0 +1,9 @@
+<div class="container">
+  <h1><%= tattoo.description %></h1>
+  <h2><%= tattoo.artist.name %></h2>
+  <div class="">
+    <% tattoo.tags.each do |tag| %>
+      <h3><%= tattoo.tag.name %></h3>
+    <% end %>
+  </div>
+</div>

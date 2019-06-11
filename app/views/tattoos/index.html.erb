@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="col-sm-6 list-group">
+    <% @tattoos.each do |tattoo| %>
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active"></a>
+      <div class="">
+        <div class="mb-1"><%= tattoo.description %></div>
+      </div>
+      <p class="mb-1"><%= tattoo.artist.name %></p>
+      <div class="d-flex justify-content-between">
+        <% tattoo.tags.each do |tag| %>
+          <small><%= tag.name %></small>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
