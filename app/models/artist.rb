@@ -1,4 +1,4 @@
-class Artist < ApplicationRecord
+class Artist < User
   belongs_to :user
 
   has_many :tattoos
