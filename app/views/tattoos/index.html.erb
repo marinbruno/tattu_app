@@ -5,7 +5,7 @@
       <div class="">
         <div class="mb-1"><%= tattoo.description %></div>
       </div>
-      <p class="mb-1"><%= tattoo.artist.name %></p>
+      <p class="mb-1"><%= tattoo.artist.user.name %></p>
       <div class="d-flex justify-content-between">
         <% tattoo.tags.each do |tag| %>
           <small><%= tag.name %></small>
