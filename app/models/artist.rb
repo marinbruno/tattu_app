@@ -1,7 +1,7 @@
 class Artist < User
   belongs_to :user
 
-  has_many :tattoos
-  has_many :tags, through: :tattoos
-  has_many :photos, through: :tattoos
+  has_many :tattoos, dependent: :destroy
+  has_many :taggings, through: :tattoos, dependent: :destroy
+  has_many :photos, through: :tattoos, dependent: :destroy
 end

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :photos, as: :photoable
+  has_many :photos, as: :photoable, dependent: :destroy
+
   mount_uploader :photo, PhotoUploader
 end
