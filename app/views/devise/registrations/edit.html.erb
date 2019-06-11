@@ -4,6 +4,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <% unless resource.photo.filename.nil? %>
+      <%= cl_image_tag resource.photo, :height=>145, :width=>300, :crop=>"fill" %>
+    <% end %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :name, required: true, autofocus: true %>
