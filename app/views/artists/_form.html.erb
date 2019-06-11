@@ -1,0 +1,26 @@
+<div class="container">
+<div class="col-12 mt-3">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <%= simple_form_for(@artist) do |f| %>
+        <% if @artist.errors.any? %>
+          <div class="errors-container">
+            <ul>
+              <% @artist.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.error_notification %>
+        <%= f.input :description %>
+        <%= f.input :instagram_username %>
+        <%= f.submit "Save", class: "btn btn-primary" %>
+        <%= link_to 'Back', artists_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+  </div>
