@@ -1,4 +1,4 @@
-class Artist < User
+class Artist < ApplicationRecord
   belongs_to :user
 
   has_many :tattoos, dependent: :destroy
