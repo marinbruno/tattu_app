@@ -1,4 +1,7 @@
-<h1><%= @artist.user.name %></h1>
+<h1><%= current_user.name %></h1>
+<div>
+      <%= cl_image_tag current_user.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+</div>
 <p><%= @artist.description %></p>
 <p><%= @artist.instagram_username %></p>
 <%= link_to 'Back', artists_path, class: 'mr-3 btn btn-secondary' %>

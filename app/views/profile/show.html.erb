@@ -1,3 +1,4 @@
+
 <div>
   <% unless @user.photo.filename.nil? %>
     <%= cl_image_tag @user.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
@@ -18,3 +19,4 @@
 <% else %>
   <%= link_to "I'm an artist!", new_artist_path, class: "btn btn-secondary" %>
 <% end %>
+
