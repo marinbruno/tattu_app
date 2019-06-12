@@ -4,9 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true
+  has_one :artist, dependent: :destroy
+  has_one :photo, as: :photoable, dependent: :destroy
 
-  has_many :artists, dependent: :destroy
-  has_one :photoable, as: :photo, dependent: :destroy
-
+  accepts_nested_attributes_for :photo, :artist
 end

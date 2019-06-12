@@ -1,0 +1,20 @@
+<%= simple_form_for :profile, url: profile_path, method: :patch do |f| %>
+
+  <%= f.simple_fields_for :photo do |photo_form| %>
+    <%= photo_form.input :photo, as: :file %>
+    <%= photo_form.input :photo_cache, as: :hidden %>
+  <% end %>
+
+  <%= f.simple_fields_for :artist do |user_form| %>
+    <%= user_form.input :name, required: true, autofocus: true %>
+    <%= user_form.input :email, required: true %>
+  <% end %>
+
+  <%= f.simple_fields_for :artist do |artist_form| %>
+    <%= artist_form.input :description %>
+    <%= artist_form.input :instagram_username %>
+  <% end %>
+
+  <%= f.submit   %>
+
+<% end %>
