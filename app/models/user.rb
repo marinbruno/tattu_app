@@ -7,6 +7,5 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :artists, dependent: :destroy
-  has_one :photoable, as: :photo, dependent: :destroy
-
+  has_one :photo, as: :photoable, dependent: :destroy
 end
