@@ -78,27 +78,30 @@ taggings_array = []
   taggings_array << new_tagging
 end
 
-user_photo_url = 'https://images.unsplash.com/photo-1481882466320-51765fd9fe21?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'
-artist_photo_url = 'https://images.unsplash.com/photo-1485742032238-7543513eeba6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'
-tattoo_photo_url = 'https://images.unsplash.com/photo-1521308452854-e037c0062a1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=891&q=80'
+user_photo_url = 'https://images.unsplash.com/photo-1481882466320-51765fd9fe21'
+artist_photo_url = 'https://images.unsplash.com/photo-1550364387-2893ac373664'
+tattoo_photo_url = 'https://images.unsplash.com/photo-1521308452854-e037c0062a1e'
 
 users_array.each do |user|
   puts 'Saving photo to an user...'
-  user_photo = Photo.new(photo: user_photo_url)
+  user_photo = Photo.new(remote_photo_url: user_photo_url)
+  user_photo.save
   user.photo = user_photo
   user.save
 end
 
 artists_array.each do |artist|
   puts 'Saving photo to an artist...'
-  artist_photo = Photo.new(photo: artist_photo_url)
+  artist_photo = Photo.new(remote_photo_url: artist_photo_url)
+  artist_photo.save
   artist.user.photo = artist_photo
   artist.save
 end
 
 tattoos_array.each do |tattoo|
   puts 'Saving photo to a tattoo...'
-  tattoo_photo = Photo.new(photo: tattoo_photo_url)
+  tattoo_photo = Photo.new(remote_photo_url: tattoo_photo_url)
+  tattoo_photo.save
   tattoo.photo = tattoo_photo
   tattoo.save
 end
