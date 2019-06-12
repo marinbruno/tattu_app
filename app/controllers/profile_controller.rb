@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   def show
-    if user_check
+    if params.has_key?(:id)
       @user = User.find(params[:id])
     else
       @user = current_user
@@ -9,8 +9,8 @@ class ProfileController < ApplicationController
 
   def edit
     @user = current_user
-    @photo = Photo.new
-    @artist = Artist.new
+    @user.build_photo
+    @user.build_artist
 
     # if current_user.photo.nil?
     #   @photo = Photo.new
@@ -26,9 +26,9 @@ class ProfileController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
-      redirect_to
+      redirect_to profile_path
     else
       render :new
     end
@@ -36,8 +36,10 @@ class ProfileController < ApplicationController
 
   private
 
-  def user_check
-    User.find(params[:id])
+  def user_params
+    params.require(:user).permit(
+      :email, :name, :photo, :description, :instagram_username,
+      photo_attributes: {}, artist_attributes: {}
+    )
   end
-
 end

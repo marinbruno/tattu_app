@@ -1,18 +1,24 @@
-<%= simple_form_for :profile, url: profile_path, method: :patch do |f| %>
+<%= simple_form_for current_user, url: profile_path do |f| %>
 
   <%= f.simple_fields_for :photo do |photo_form| %>
     <%= photo_form.input :photo, as: :file %>
     <%= photo_form.input :photo_cache, as: :hidden %>
   <% end %>
 
-  <%= f.simple_fields_for :artist do |user_form| %>
-    <%= user_form.input :name, required: true, autofocus: true %>
-    <%= user_form.input :email, required: true %>
-  <% end %>
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :email, required: true %>
 
-  <%= f.simple_fields_for :artist do |artist_form| %>
-    <%= artist_form.input :description %>
-    <%= artist_form.input :instagram_username %>
+  <% if Artist.exists?(user_id: current_user) %>
+    <%= f.simple_fields_for :artist do |artist_form| %>
+      <%= artist_form.input :description %>
+      <%= artist_form.input :instagram_username %>
+    <% end %>
+  <% else %>
+    <select id="test" name="form_select" onchange="showHide('hidden_div', this)">
+       <option value="0">No</option>
+       <option value="1">Yes</option>
+    </select>
+    <div id="hidden_div">This is a hidden div</div>
   <% end %>
 
   <%= f.submit   %>

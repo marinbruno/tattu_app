@@ -1,14 +1,14 @@
 
 <div>
   <% unless @user.photo.nil? %>
-    <%= cl_image_tag @user.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+    <%= cl_image_tag @user.photo.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
   <% end %>
 </div>
 <div>
   <h1><%= @user.name %></h1>
   <p> <strong>Email:</strong> <%= @user.email %> </p>
 </div>
-<%= link_to "Edit profile", edit_profile_path(current_user), class: "btn btn-secondary" %>
+<%= link_to "Edit profile", edit_profile_path, class: "btn btn-secondary" %>
 <% if Artist.exists?(user_id: @user) %>
   <p><%= @user.artists[0].description %></p>
   <p><%= @user.artists[0].instagram_username %></p>
