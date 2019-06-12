@@ -5,6 +5,8 @@ class Artist < ApplicationRecord
 
   has_many :tattoos, dependent: :destroy
   has_many :taggings, through: :tattoos, dependent: :destroy
+
   has_one :photo, as: :avatar, through: :user, dependent: :destroy
   accepts_nested_attributes_for :photo
+
 end

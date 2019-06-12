@@ -28,7 +28,7 @@ class ArtistsController < ApplicationController
   def update
     @artist = Artist.find(params[:id])
     if @artist.update(artist_params)
-      redirect_to artist_path(@artist)
+      redirect_to profile_path(current_user)
     else
       render :new
     end

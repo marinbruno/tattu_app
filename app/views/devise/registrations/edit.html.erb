@@ -7,9 +7,13 @@
     <% unless resource.photo.filename.nil? %>
       <%= cl_image_tag resource.photo, :height=>145, :width=>300, :crop=>"fill" %>
     <% end %>
+
+
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+
     <%= f.input :name, required: true, autofocus: true %>
     <%= f.input :email, required: true %>
-    <%= f.input :name, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -29,7 +33,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn btn-secondary" %>
   </div>
 <% end %>
 
