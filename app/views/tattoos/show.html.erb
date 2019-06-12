@@ -11,3 +11,18 @@
     <% end %>
   </div>
 </div>
+
+
+<div class="container">
+  <div class="tattoo-image">
+    <%= cl_image_tag @tattoo.image %>
+  </div>
+  <div class="tattoo-artist-info">
+    <div class="tattoo-artist-img">
+      <%= cl_image_tag @tattoo.artist_image %>
+    </div>
+    <div class="tattoo-artist-data">
+      <%= @tattoo.artist_name %>
+    </div>
+  </div>
+</div>
