@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :artists, dependent: :destroy
-  has_many :photos, as: :photoable, dependent: :destroy
+  validates :name, presence: true
 
-  mount_uploader :photo, PhotoUploader
+  has_many :artists, dependent: :destroy
+  has_one :photoable, as: :photo, dependent: :destroy
 end

@@ -37,6 +37,6 @@ class ArtistsController < ApplicationController
   private
 
   def artist_params
-    params.require(:artist).permit(:description, :instagram_username, :photo)
+    params.require(:artist).permit(:description, :instagram_username, photos_attributes: [:photo])
   end
 end

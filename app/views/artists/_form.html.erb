@@ -16,6 +16,10 @@
         <%= f.error_notification %>
         <%= f.input :description %>
         <%= f.input :instagram_username %>
+        <%= f.simple_fields_for :avatar do |f| %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :photo_cache, as: :hidden %>
+        <% end %>
         <%= f.submit "Save", class: "btn btn-primary" %>
         <%= link_to 'Back', artists_path, class: 'btn btn-primary' %>
       <% end %>
