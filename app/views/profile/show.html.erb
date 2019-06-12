@@ -1,9 +1,20 @@
- <div>
-    <% unless current_user.photo.filename.nil? %>
-      <%= cl_image_tag @user.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
-    <% end %>
-  </div>
-  <div class="ml-3">
-    <h1><%= @user.name %></h1>
-    <p> <strong>Email:</strong> <%= @user.email %> </p>
-  </div>
+<div>
+  <% unless @user.photo.filename.nil? %>
+    <%= cl_image_tag @user.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+  <% end %>
+</div>
+<div>
+  <h1><%= @user.name %></h1>
+  <p> <strong>Email:</strong> <%= @user.email %> </p>
+</div>
+<%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-secondary" %>
+<% if Artist.where(user_id: @user) %>
+  <!-- Artist profile -->
+  <p><%= @user.artists[0].description %></p>
+  <p><%= @user.artists[0].instagram_username %></p>
+  <%= link_to 'Edit', edit_artist_path(@user.artists[0]), class: 'mr-3 btn btn-secondary' %>
+  <!-- Tattoos -->
+
+<% else %>
+  <%= link_to "I'm an artist!", new_artist_path, class: "btn btn-secondary" %>
+<% end %>
