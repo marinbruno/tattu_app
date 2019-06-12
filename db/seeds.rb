@@ -51,7 +51,8 @@ tattoos_array = []
 10.times do
   puts 'Creating a tatoo...'
   tattoo_hash = {
-    artist: artists_array.sample
+    artist: artists_array.sample,
+    description: 'Beautiful'
   }
   new_tattoo = Tattoo.new(tattoo_hash)
   new_tattoo.save
