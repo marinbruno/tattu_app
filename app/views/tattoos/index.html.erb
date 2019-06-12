@@ -1,15 +1,17 @@
 <div class="container">
-  <div class="col-sm-6 list-group">
+  <div class="tattoo-cards">
     <% @tattoos.each do |tattoo| %>
-      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active"></a>
-      <div class="">
-        <div class="mb-1"><%= tattoo.description %></div>
-      </div>
-      <p class="mb-1"><%= tattoo.artist.user.name %></p>
-      <div class="d-flex justify-content-between">
-        <% tattoo.tags.each do |tag| %>
-          <small><%= tag.name %></small>
-        <% end %>
+      <div class="tattoo-card">
+        <%= cl_image_tag tattoo.image, class:"tattoo-card-image" %>
+        <div class="tattoo-card-infos">
+          <% tattoo.tags.each do |tag| %>
+            <div class="tattoo-card-tags">
+              <span class=<% tag.name %>><%= tag.name %></span>
+            </div>
+          <% end %>
+          <%= cl_image_tag tattoo.artist_image, class:"tattoo-artist-image" %>
+          <p class="tattoo-artist-name"><%= tattoo.artist_name %></p>
+        </div>
       </div>
     <% end %>
   </div>
