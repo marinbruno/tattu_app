@@ -1,0 +1,23 @@
+.banner {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), image-url("banner-image2.jpg");
+  background-size: cover;
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+  }
+  p {
+    color: white;
+    opacity: 0.8;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 20px;
+  }
+  .btn {
+    padding: 10px 30px;
+  }
+}
