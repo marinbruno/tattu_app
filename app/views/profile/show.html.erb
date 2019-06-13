@@ -13,3 +13,12 @@
   <%= link_to "I'm an artist too!", new_artist_path, class: "btn btn-secondary" %>
 <% end %>
 
+<% if Artist.exists?(user_id: @user) %>
+  <h2>My tattoos</h2>
+  <% @user.artist.tattoos.each do |tattoo| %>
+    <%= cl_image_tag tattoo.photo.photo, height: 200, width: 200, crop: "fill" %>
+    <%= link_to "Edit", edit_tattoo_path(tattoo), class: "btn btn-secondary" %>
+  <% end %>
+  <%= link_to "Add", new_tattoo_path, class: "btn btn-secondary" %>
+<% end %>
+
