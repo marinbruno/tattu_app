@@ -15,8 +15,20 @@
 .navbar-link {
   color: black;
   font-weight: bold;
-  padding: 10px;
-  font-size: 13px;
+}
+
+.nav-link {
+  color: black;
+  font-weight: bold;
+}
+
+.navbar-search {
+  margin-bottom: 0px;
+}
+
+.navbar-link-index {
+  color: white;
+  font-weight: bold;
 }
 
 .navbar-home {
@@ -27,10 +39,17 @@
   .navbar-link {
     color: white;
     font-weight: bold;
-    padding: 10px;
-    font-size: 13px;
   }
-  .search {
+  .navbar-search {
     display: none;
+  }
+  .avatar-placeholder{
+
+  }
+  .nav-item {
+    .nav-link{
+      color: white;
+      font-weight: bold;
+    }
   }
 }
