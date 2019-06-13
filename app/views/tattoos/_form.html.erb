@@ -10,9 +10,7 @@
 
   <%= f.input :description, required: true, autofocus: true %>
 
-  <%= f.simple_fields_for :taggings do |tagg_form| %>
-    <%= tagg_form.association :tag, as: :check_boxes %>
-  <% end %>
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
 
   <%= f.submit   %>
 

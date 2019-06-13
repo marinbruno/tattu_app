@@ -18,7 +18,7 @@ class TattoosController < ApplicationController
 
   def create
     @tattoo = Tattoo.new(tattoo_params)
-    @tattoo.artist = current_user
+    @tattoo.artist = current_user.artist
 
     if @tattoo.save
       redirect_to tattoo_path(@tattoo)
@@ -60,6 +60,6 @@ class TattoosController < ApplicationController
   end
 
   def tattoo_params
-    params.require(:tattoo).permit(:description, :artist_id, photo_attributes: {}, taggings_attributes: [])
+    params.require(:tattoo).permit(:description, :artist_id, photo_attributes: {}, tag_ids: [])
   end
 end
