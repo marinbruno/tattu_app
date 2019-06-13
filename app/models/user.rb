@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
 
   has_one :artist, dependent: :destroy
+
   has_one :photo, as: :photoable, dependent: :destroy
 
   def image
