@@ -21,7 +21,7 @@ class TattoosController < ApplicationController
     @tattoo.artist = current_user.artist
 
     if @tattoo.save
-      redirect_to tattoo_path(@tattoo)
+      redirect_to profile_path
     else
       render :new
     end
@@ -35,7 +35,6 @@ class TattoosController < ApplicationController
   end
 
   def update
-    raise
     if @tattoo.update(tattoo_params)
       redirect_to profile_path
     else
