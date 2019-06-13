@@ -2,6 +2,12 @@
   justify-content: space-between;
   background: white;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 10px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -19,6 +25,17 @@
   font-size: 13px;
 }
 
+.nav-item {
+  padding: 10px;
+}
+
+.navbar-link-index {
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 10px;
+}
+
 .navbar-home {
   background: transparent;
   box-shadow: none;
@@ -30,7 +47,14 @@
     padding: 10px;
     font-size: 13px;
   }
-  .search {
+  .navbar-search {
     display: none;
+  }
+  .nav-item {
+    padding: 10px;
+    .nav-link{
+      color: white;
+      font-weight: bold;
+    }
   }
 }
