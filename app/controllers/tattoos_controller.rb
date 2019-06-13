@@ -4,7 +4,11 @@ class TattoosController < ApplicationController
   before_action :set_artist, only: [:create, :destroy]
 
   def index
-    @tattoos = Tattoo.all
+    if params[:query].present?
+      @tattoos = Tattoo.search_by_all(params[:query])
+    else
+      @tattoos = Tattoo.all
+    end
   end
 
   def show; end

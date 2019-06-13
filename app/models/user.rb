@@ -4,15 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   has_one :artist, dependent: :destroy
+
+  has_many :tattoos, through: :artist
 
   has_one :photo, as: :photoable, dependent: :destroy
 
   def image
     photo.photo
   end
-
 
   accepts_nested_attributes_for :photo, :artist
 end
