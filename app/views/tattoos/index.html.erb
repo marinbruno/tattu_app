@@ -1,18 +1,26 @@
-<div class="container">
+<div class="card-container my-10">
   <div class="tattoo-cards">
     <% @tattoos.each do |tattoo| %>
-      <div class="tattoo-card">
-        <%= cl_image_tag tattoo.image, class:"tattoo-card-image" %>
-        <div class="tattoo-card-infos">
-          <% tattoo.tags.each do |tag| %>
-            <div class="tattoo-card-tags">
-              <span class=<% tag.name %>><%= tag.name %></span>
-            </div>
+        <div class="tattoo-card">
+          <%= link_to(tattoo_path(tattoo)) do %>
+            <%= cl_image_tag tattoo.image, class:"tattoo-card-image" %>
           <% end %>
-          <%= cl_image_tag tattoo.artist_image, class:"tattoo-artist-image" %>
-          <p class="tattoo-artist-name"><%= tattoo.artist_name %></p>
+          <div class="tattoo-card-infos">
+            <div class="tattoo-card-tags">
+            <% tattoo.tags.each do |tag| %>
+                <div class="tattoo-tag">
+                  <span class="<%= tag.css %>"><%= tag.name %></span>
+                </div>
+            <% end %>
+            </div>
+            <div class="tattoo-artist">
+              <%= link_to(artist_path(tattoo.artist)) do %>
+                <%= cl_image_tag tattoo.artist_image, class:"avatar", width: 50, height: 50, crop: :thumb %>
+                <p class="tattoo-artist-name"><%= tattoo.artist_name %></p>
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
     <% end %>
   </div>
 </div>
