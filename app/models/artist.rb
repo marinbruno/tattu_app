@@ -1,8 +1,6 @@
 class Artist < ApplicationRecord
   belongs_to :user
 
-  validates :description, presence: true
-
   has_many :tattoos, dependent: :destroy
   has_many :taggings, through: :tattoos, dependent: :destroy
 
