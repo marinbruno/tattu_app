@@ -15,24 +15,32 @@ class TattoosController < ApplicationController
 
   def new
     @tattoo = Tattoo.new
+    @tattoo.build_photo if @tattoo.photo.nil?
+    @tattoo.build_taggings if @tattoo.taggings.nil?
+    @tags = Tag.all
   end
 
   def create
     @tattoo = Tattoo.new(tattoo_params)
-    @tattoo.artist = current_user
+    @tattoo.artist = current_user.artist
 
     if @tattoo.save
-      redirect_to tattoo_path(@tattoo)
+      redirect_to profile_path
     else
       render :new
     end
   end
 
-  def edit; end
+  def edit
+    @tattoo = Tattoo.find(params[:id])
+    @tattoo.build_photo if @tattoo.photo.nil?
+    @tattoo.build_taggings if @tattoo.taggings.nil?
+    @tags = Tag.all
+  end
 
   def update
     if @tattoo.update(tattoo_params)
-      redirect_to tattoo_path(@tattoo)
+      redirect_to profile_path
     else
       render :edit
     end
@@ -55,6 +63,6 @@ class TattoosController < ApplicationController
   end
 
   def tattoo_params
-    params.require(:tattoo).permit(:description, :artist_id, :photo)
+    params.require(:tattoo).permit(:description, :artist_id, photo_attributes: {}, tag_ids: [])
   end
 end

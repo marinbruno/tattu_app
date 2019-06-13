@@ -1,7 +1,19 @@
-<h1><%= current_user.name %></h1>
 <div>
-      <%= cl_image_tag current_user.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+  <% unless @artist.photo.nil? %>
+    <%= cl_image_tag @artist.photo.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+  <% end %>
 </div>
-<p><%= @artist.description %></p>
-<p><%= @artist.instagram_username %></p>
+<div>
+  <h1><%= @artist.name %></h1>
+  <p> <strong>Email:</strong> <%= @artist.user.email %> </p>
+  <p> <strong>Description:</strong> <%= @artist.description %></p>
+  <p> <strong>Instagram:</strong> <%= @artist.instagram_username %></p>
+</div>
+
+<h2>My tattoos</h2>
+<% @artist.tattoos.each do |tattoo| %>
+    <%= link_to cl_image_tag( tattoo.photo.photo, height: 200, width: 200, crop: "fill"), tattoo_path(tattoo) %>
+  <%= tattoo.description %>
+<% end %>
+
 <%= link_to 'Back', artists_path, class: 'mr-3 btn btn-secondary' %>

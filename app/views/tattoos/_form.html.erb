@@ -1,0 +1,17 @@
+<%= simple_form_for tattoo do |f| %>
+
+  <%= f.simple_fields_for :photo do |photo_form| %>
+    <% unless tattoo.photo.photo.filename.nil? %>
+      <%= cl_image_tag tattoo.photo.photo, :height=>145, :width=>300, :crop=>"fill" %>
+    <% end %>
+    <%= photo_form.input :photo, as: :file %>
+    <%= photo_form.input :photo_cache, as: :hidden %>
+  <% end %>
+
+  <%= f.input :description, required: true, autofocus: true %>
+
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+
+  <%= f.submit   %>
+
+<% end %>
