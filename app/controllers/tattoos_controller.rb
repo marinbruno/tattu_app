@@ -24,11 +24,13 @@ class TattoosController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @tattoo = Tattoo.find(params[:id])
+  end
 
   def update
     if @tattoo.update(tattoo_params)
-      redirect_to tattoo_path(@tattoo)
+      redirect_to profile_path
     else
       render :edit
     end

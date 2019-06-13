@@ -1,0 +1,14 @@
+<%= simple_form_for tattoo, url: tattoo_path do |f| %>
+
+  <%= f.simple_fields_for :photo do |photo_form| %>
+    <%= photo_form.input :photo, as: :file %>
+    <%= photo_form.input :photo_cache, as: :hidden %>
+  <% end %>
+
+  <%= f.input :description, required: true, autofocus: true %>
+
+  <!-- TAGGGGGSSSSS -->
+
+  <%= f.submit   %>
+
+<% end %>
