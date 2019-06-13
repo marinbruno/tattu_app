@@ -1,3 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% content_for(:navbar_class, "navbar-home") %>
 
+<div class="banner">
+  <div class="banner-content">
+    <h1>Find your ideal tattoo. Seamlessly.</h1>
+    <p>Search for the one that best matches your personality.</p>
+    <%= link_to "Explore", tattoos_path, class:"btn btn-light" %>
+  </div>
+</div>

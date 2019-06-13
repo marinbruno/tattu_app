@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'tattoos#index'
+  root 'pages#home'
   devise_for :users
 
   get   '/profile',      to: "profile#show", as: :profile
@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   patch '/profile',      to: "profile#update"
   get   '/profile/edit', to: "profile#edit", as: :edit_profile
 
-  resources :tattoos, except: [:index]
+  resources :tattoos
   resources :artists
 end
