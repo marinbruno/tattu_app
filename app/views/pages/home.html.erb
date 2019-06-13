@@ -5,5 +5,13 @@
     <h1>Find your ideal tattoo. Seamlessly.</h1>
     <p>Search for the one that best matches your personality.</p>
     <%= link_to "Explore", tattoos_path, class:"btn btn-light" %>
+    <div class= "search">
+    <%= form_tag tattoos_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control mb-3",
+    placeholder: "Find a tattoo"%>
+  <% end %>
+    </div>
   </div>
 </div>
