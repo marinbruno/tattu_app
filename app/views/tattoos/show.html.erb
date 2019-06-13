@@ -1,28 +1,19 @@
 <div class="container">
-  <div class="tattoo-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
-    <%= cl_image_tag @tattoo.photo.photo, height: 300, width: 400, crop: :fill %>
+<div class="cardd d-flex ">
+  <div class="d-flex col-9">
+     <%= cl_image_tag @tattoo.photo.photo %>
   </div>
-  <h1> Description:<%= @tattoo.description %></h1>
-  <h2> Artist: <%= @tattoo.artist.user.name %></h2>
-  <div class="">
-
-     Tags:<% @tattoo.tags.each do |tag| %>
-      <h3><%= tag.name %></h3>
+  <div class=" d-flex align-content-between flex-wrap col-3">
+    <p>Description: <%= @tattoo.description %></p>
+     <h3> Tags:<% @tattoo.tags.each do |tag| %>
+      <%= tag.name %></h3>
     <% end %>
+    <div class="imagem">
+      <%= cl_image_tag @tattoo.artist_image, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+      <p> <%= link_to artist_path do %>
+       <%= @tattoo.artist_name %> </p>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-<div class="container">
-  <div class="tattoo-image">
-    <%= cl_image_tag @tattoo.image %>
-  </div>
-  <div class="tattoo-artist-info">
-    <div class="tattoo-artist-img">
-      <%= cl_image_tag @tattoo.artist_image %>
-    </div>
-    <div class="tattoo-artist-data">
-      <%= @tattoo.artist_name %>
-    </div>
-  </div>
 </div>
