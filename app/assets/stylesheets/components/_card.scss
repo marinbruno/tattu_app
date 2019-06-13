@@ -1,3 +1,7 @@
+.card-container {
+  margin-bottom: 16px;
+}
+
 .tattoo-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -24,10 +28,10 @@
 }
 
 .tattoo-card-infos {
-  padding: 16px;
+  padding: 8px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .tattoo-card-image {
@@ -37,13 +41,21 @@
 }
 
 .tattoo-artist-name {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   margin: 0;
 }
 
-.tattoo-artist-image {
-  width: 40px;
-  height: 100%;
-  border-radius: 50%;
+.tattoo-card-tags {
+  display: flex;
+  justify-content: space-between;
 }
+
+.tattoo-artist {
+  align-items: center;
+}
+
+.tattoo-tag {
+  padding: 5px;
+}
+
