@@ -13,12 +13,6 @@
       <%= artist_form.input :description %>
       <%= artist_form.input :instagram_username %>
     <% end %>
-  <% else %>
-    <select id="test" name="form_select" onchange="showHide('hidden_div', this)">
-       <option value="0">No</option>
-       <option value="1">Yes</option>
-    </select>
-    <div id="hidden_div">This is a hidden div</div>
   <% end %>
 
   <%= f.submit   %>

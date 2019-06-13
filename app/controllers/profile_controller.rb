@@ -9,20 +9,8 @@ class ProfileController < ApplicationController
 
   def edit
     @user = current_user
-    @user.build_photo
-    @user.build_artist
-
-    # if current_user.photo.nil?
-    #   @photo = Photo.new
-    # else
-    #   @photo = current_user.photo
-    # end
-
-    # if current_user.artist.nil?
-    #   @artist = Artist.new
-    # else
-    #   @artist = current_user.artist
-    # end
+    @user.build_artist if @user.artist.nil?
+    @user.build_photo if @user.photo.nil?
   end
 
   def update

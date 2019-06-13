@@ -9,11 +9,7 @@
   <p> <strong>Email:</strong> <%= @user.email %> </p>
 </div>
 <%= link_to "Edit profile", edit_profile_path, class: "btn btn-secondary" %>
-<% if Artist.exists?(user_id: @user) %>
-  <p><%= @user.artists[0].description %></p>
-  <p><%= @user.artists[0].instagram_username %></p>
-  <%= link_to 'Edit', edit_artist_path(@user.artists[0]), class: 'mr-3 btn btn-secondary' %>
-<% else %>
+<% unless Artist.exists?(user_id: @user) %>
   <%= link_to "I'm an artist too!", new_artist_path, class: "btn btn-secondary" %>
 <% end %>
 

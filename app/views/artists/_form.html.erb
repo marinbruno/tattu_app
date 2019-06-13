@@ -1,30 +1,18 @@
-<div class="container">
-<div class="col-12 mt-3">
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
-      <%= simple_form_for(@artist) do |f| %>
-        <% if @artist.errors.any? %>
-          <div class="errors-container">
-            <ul>
-              <% @artist.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <%= f.error_notification %>
-        <%= f.input :description %>
-        <%= f.input :instagram_username %>
-        <%= f.simple_fields_for :avatar do |f| %>
-          <%= f.input :photo, as: :file %>
-          <%= f.input :photo_cache, as: :hidden %>
-        <% end %>
-        <%= f.submit "Save", class: "btn btn-primary" %>
-        <%= link_to 'Back', artists_path, class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>
-</div>
-</div>
-  </div>
+<%= simple_form_for current_user, url: profile_path do |f| %>
+
+  <%= f.simple_fields_for :photo do |photo_form| %>
+    <%= photo_form.input :photo, as: :file %>
+    <%= photo_form.input :photo_cache, as: :hidden %>
+  <% end %>
+
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :email, required: true %>
+
+  <%= f.simple_fields_for :artist do |artist_form| %>
+    <%= artist_form.input :description %>
+    <%= artist_form.input :instagram_username %>
+  <% end %>
+
+  <%= f.submit   %>
+
+<% end %>
