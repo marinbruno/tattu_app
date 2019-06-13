@@ -9,16 +9,16 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
+    @artist.user = current_user
+    @artist.save
+    redirect_to edit_profile_path
   end
 
   def create
-    @artist = Artist.new(artist_params)
+    @artist = Artist.new
     @artist.user = current_user
-    if @artist.save
-      redirect_to artists_path
-    else
-      render :new
-    end
+    @artist.save
+    redirect_to edit_profile_path
   end
 
   def edit
