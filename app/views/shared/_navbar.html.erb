@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %> row ">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %> px-3 ">
   <div class="nav-logo">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "tatu1.png", width: "40", height: "40" %>
@@ -10,18 +10,18 @@
   </button>
 
 
-  <div class="navbar-search">
-    <%= form_tag tattoos_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control mb-3",
-        placeholder: "Find a tattoo"%>
-    <% end %>
-  </div>
 
   <div class="navbar-link-index">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <div class="navbar-search">
+          <%= form_tag tattoos_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a tattoo"%>
+          <% end %>
+        </div>
         <li class="nav-item">
           <%= link_to "Tattoos", tattoos_path, class: "nav-link" %>
         </li>
@@ -38,8 +38,10 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Log in", new_user_session_path, class: "navbar-link" %>
-            <%= link_to "Register", new_user_registration_path, class: "navbar-link" %>
+            <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>

@@ -2,12 +2,6 @@
   justify-content: space-between;
   background: white;
   margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  font-size: 13px;
-  padding: 10px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -21,19 +15,20 @@
 .navbar-link {
   color: black;
   font-weight: bold;
-  padding: 10px;
-  font-size: 13px;
 }
 
-.nav-item {
-  padding: 10px;
+.nav-link {
+  color: black;
+  font-weight: bold;
+}
+
+.navbar-search {
+  margin-bottom: 0px;
 }
 
 .navbar-link-index {
   color: white;
   font-weight: bold;
-  font-size: 13px;
-  padding: 10px;
 }
 
 .navbar-home {
@@ -44,14 +39,14 @@
   .navbar-link {
     color: white;
     font-weight: bold;
-    padding: 10px;
-    font-size: 13px;
   }
   .navbar-search {
     display: none;
   }
+  .avatar-placeholder{
+
+  }
   .nav-item {
-    padding: 10px;
     .nav-link{
       color: white;
       font-weight: bold;
