@@ -11,7 +11,7 @@ class Tattoo < ApplicationRecord
   delegate :image, to: :artist, prefix: true
   delegate :name, to: :artist, prefix: true
 
-  accepts_nested_attributes_for :photo, :taggings
+  accepts_nested_attributes_for :photo, :taggings, allow_destroy: true
 
   def image
     photo.photo
