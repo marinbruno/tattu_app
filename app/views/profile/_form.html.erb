@@ -1,23 +1,29 @@
-<%= simple_form_for current_user, url: profile_path do |f| %>
+<div class="container">
+  <div class="col-12 mt-3">
+    <%= simple_form_for current_user, url: profile_path do |f| %>
+      <div class="d-flex">
+        <div>
+          <%= f.simple_fields_for :photo do |photo_form| %>
+            <% unless current_user.photo.photo.filename.nil? %>
+              <%= cl_image_tag current_user.photo.photo, height: 200, width: 200, crop: "fill" %>
+            <% end %>
+            <%= photo_form.input :photo, as: :file %>
+            <%= photo_form.input :photo_cache, as: :hidden %>
+          <% end %>
+        </div>
+        <div class="flex-grow-1">
+          <%= f.input :name, required: true, autofocus: true %>
+          <%= f.input :email, required: true %>
 
-  <%= f.simple_fields_for :photo do |photo_form| %>
-    <% unless current_user.photo.photo.filename.nil? %>
-      <%= cl_image_tag current_user.photo.photo, :height=>145, :width=>300, :crop=>"fill" %>
+          <% if Artist.exists?(user_id: current_user) %>
+            <%= f.simple_fields_for :artist do |artist_form| %>
+              <%= artist_form.input :description %>
+              <%= artist_form.input :instagram_username %>
+            <% end %>
+          <% end %>
+          <%= f.submit   %>
+        </div>
+      </div>
     <% end %>
-    <%= photo_form.input :photo, as: :file %>
-    <%= photo_form.input :photo_cache, as: :hidden %>
-  <% end %>
-
-  <%= f.input :name, required: true, autofocus: true %>
-  <%= f.input :email, required: true %>
-
-  <% if Artist.exists?(user_id: current_user) %>
-    <%= f.simple_fields_for :artist do |artist_form| %>
-      <%= artist_form.input :description %>
-      <%= artist_form.input :instagram_username %>
-    <% end %>
-  <% end %>
-
-  <%= f.submit   %>
-
-<% end %>
+  </div>
+</div>
