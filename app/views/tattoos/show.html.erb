@@ -12,8 +12,8 @@
           <% end %>
         </div>
 
-        <div class="tattoo-artist-name">
-          <%= link_to(artist_path(@tattoo.artist)) do %>
+        <div class="tattoo-artist-name pl-2">
+          <%= link_to(artist_path(@tattoo.artist), class:"btn") do %>
             <%= @tattoo.artist_name %>
           <% end %>
         </div>

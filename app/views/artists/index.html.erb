@@ -2,14 +2,16 @@
   <div class="artist-cards">
     <% @artists.each do |artist| %>
       <div class="card-artist">
-        <%= link_to artist_path(artist) do %>
-          <div class="image-card">
+        <div class="image-card">
+          <%= link_to artist_path(artist) do %>
             <%= cl_image_tag artist.image, class:"avatar", width: 130, height: 130, crop: :thumb %>
-            <div class="artist-name">
+          <% end %>
+          <div class="artist-name">
+            <%= link_to artist_path(artist, class:"btn") do %>
               <p><%= artist.name %></p>
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
         <div class="artist-card-infos">
           <div class="artist-card-tags">
             <% artist.tags.each do |tag| %>
