@@ -1,19 +1,41 @@
-<div class="container">
-<div class="cardd d-flex ">
-  <div class="d-flex col-9">
-     <%= cl_image_tag @tattoo.photo.photo %>
-  </div>
-  <div class=" d-flex align-content-between flex-wrap col-3">
-    <p>Description: <%= @tattoo.description %></p>
-     <h3> Tags:<% @tattoo.tags.each do |tag| %>
-      <%= tag.name %></h3>
-    <% end %>
-    <div class="imagem">
-      <%= cl_image_tag @tattoo.artist_image, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
-      <p> <%= link_to artist_path do %>
-       <%= @tattoo.artist_name %> </p>
-      <% end %>
+<div class="tattoo-show-container">
+  <div class="tattoo-show">
+    <div class="tattoo-photo">
+      <%= cl_image_tag @tattoo.image, height: 300, crop: :fill %>
+    </div>
+
+    <div class="tattoo-related-infos">
+      <div class="tattoo-description">
+        <p>Description: <%= @tattoo.description %></p>
+      </div>
+
+      <div class="tattoo-tags">
+        <% @tattoo.tags.each do |tag| %>
+          <div class="tattoo-tags-tag">
+            <span class="<%= tag.css %>"><%= tag.name %></span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="tattoo-artist">
+        <div class="tattoo-artist-image">
+          <%= link_to(artist_path(@tattoo.artist)) do %>
+            <%= cl_image_tag @tattoo.artist_image, height: 100, width: 100, crop: :thumb, class:"avatar" %>
+          <% end %>
+        </div>
+
+        <div class="tattoo-artist-name">
+          <%= link_to(artist_path(@tattoo.artist)) do %>
+            <%= @tattoo.artist_name %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="related-tattoos">
+    <!-- insert tag related tattoos -->
+  </div>
 </div>
-</div>
+
+
