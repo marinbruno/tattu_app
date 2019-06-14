@@ -1,0 +1,49 @@
+ .card-container {
+  margin-bottom: 16px;
+}
+.artist-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-gap: 16px;
+  padding: 16px;
+}
+.artist-name {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 8px;
+  text-decoration-line: none;
+}
+.card-artist {
+}
+
+.image-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.artist-links {
+  display: flex;
+  justify-content: center;
+}
+
+$info-padding: 100px;
+.artist-card-infos {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: -$info-padding;
+  height: 200px;
+  position: relative;
+  padding-top: $info-padding;
+}
+.artist-card-tags {
+  display: flex;
+  justify-content: center;
+}
+
+.artist-tag {
+  padding: 5px;
+}
+

@@ -1,4 +1,31 @@
-<<h1>All artists</h1>
-<% @artists.each do |artist| %>
-  <%= link_to artist.user.name, artist_path(artist.id) %>
-<% end %>
+<div class="card-container my-10">
+  <div class="artist-cards">
+    <% @artists.each do |artist| %>
+      <div class="card-artist">
+        <%= link_to artist_path(artist) do %>
+          <div class="image-card">
+            <%= cl_image_tag artist.image, class:"avatar", width: 130, height: 130, crop: :thumb %>
+            <div class="artist-name">
+              <p><%= artist.name %></p>
+            </div>
+          </div>
+        <% end %>
+        <div class="artist-card-infos">
+          <div class="artist-card-tags">
+            <% artist.tags.each do |tag| %>
+              <div class="tattoo-tag">
+                <span class="<%= tag.css %>"><%= tag.name %></span>
+              </div>
+            <% end %>
+          </div>
+          <div class="artist-links">
+            <%= link_to "#" do %>
+              <i class="fab fa-instagram"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
