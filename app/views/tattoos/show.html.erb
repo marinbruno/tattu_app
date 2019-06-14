@@ -1,26 +1,14 @@
-<div class="tattoo-show-container">
+<div class="tattoo-show-container my-3">
   <div class="tattoo-show">
     <div class="tattoo-photo">
-      <%= cl_image_tag @tattoo.image, height: 300, crop: :fill %>
+      <%= cl_image_tag @tattoo.image, height: 450, crop: :fill, class:"rounded" %>
     </div>
 
     <div class="tattoo-related-infos">
-      <div class="tattoo-description">
-        <p>Description: <%= @tattoo.description %></p>
-      </div>
-
-      <div class="tattoo-tags">
-        <% @tattoo.tags.each do |tag| %>
-          <div class="tattoo-tags-tag">
-            <span class="<%= tag.css %>"><%= tag.name %></span>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="tattoo-artist">
+      <div class="tattoo-artist mb-3">
         <div class="tattoo-artist-image">
           <%= link_to(artist_path(@tattoo.artist)) do %>
-            <%= cl_image_tag @tattoo.artist_image, height: 100, width: 100, crop: :thumb, class:"avatar" %>
+            <%= cl_image_tag @tattoo.artist_image, height: 40, width: 40, crop: :thumb, class:"avatar" %>
           <% end %>
         </div>
 
@@ -29,6 +17,18 @@
             <%= @tattoo.artist_name %>
           <% end %>
         </div>
+      </div>
+
+      <div class="tattoo-description mb-3">
+        <p><%= @tattoo.description %></p>
+      </div>
+
+      <div class="tattoo-tags">
+        <% @tattoo.tags.each do |tag| %>
+          <div class="tattoo-tags-tag">
+            <span class="<%= tag.css %>"><%= tag.name %></span>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
