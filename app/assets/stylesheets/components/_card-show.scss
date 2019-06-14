@@ -3,7 +3,23 @@
   justify-content: center;
 }
 
+.tattoo-photo {
+  max-width: 100%;
+  height: auto;
+}
+
 .tattoo-related-infos {
   background-color: white;
+  padding: 16px;
+  padding-right: 50px;
+  width: 17vw;
+}
+
+.tattoo-artist {
+  display: flex;
+}
+
+.tattoo-artist-name {
+  padding-left: 10px;
 }
 
