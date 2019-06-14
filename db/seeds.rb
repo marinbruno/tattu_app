@@ -87,7 +87,6 @@ tattoo_photo_url = 'https://images.unsplash.com/photo-1521308452854-e037c0062a1e
 users_array.each do |user|
   puts 'Saving photo to an user...'
   user_photo = Photo.new(remote_photo_url: user_photo_url)
-  user_photo.save
   user.photo = user_photo
   user.save
 end
@@ -95,7 +94,6 @@ end
 artists_array.each do |artist|
   puts 'Saving photo to an artist...'
   artist_photo = Photo.new(remote_photo_url: artist_photo_url)
-  artist_photo.save
   artist.user.photo = artist_photo
   artist.save
 end
@@ -103,7 +101,6 @@ end
 tattoos_array.each do |tattoo|
   puts 'Saving photo to a tattoo...'
   tattoo_photo = Photo.new(remote_photo_url: tattoo_photo_url)
-  tattoo_photo.save
   tattoo.photo = tattoo_photo
   tattoo.save
 end

@@ -14,7 +14,7 @@
             <% end %>
             </div>
             <div class="tattoo-artist">
-              <%= link_to(artist_path(tattoo.artist)) do %>
+              <%= link_to(artist_path(tattoo.artist), class:"btn") do %>
                 <%= cl_image_tag tattoo.artist_image, class:"avatar", width: 50, height: 50, crop: :thumb %>
                 <p class="tattoo-artist-name"><%= tattoo.artist_name %></p>
               <% end %>
