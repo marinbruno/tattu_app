@@ -27,7 +27,7 @@ users_array = []
 end
 
 artists_array = []
-5.times do
+10.times do
   puts 'Creating an artist...'
   user_hash = {
     name: Faker::Name.name,
@@ -48,11 +48,12 @@ end
 
 
 tattoos_array = []
-10.times do
-  puts 'Creating a tatoo...'
+20.times do
+  puts 'Creating a tattoo...'
+  description_array = Faker::Hipster.words(4, true)
   tattoo_hash = {
     artist: artists_array.sample,
-    description: 'Beautiful'
+    description: "##{description_array[0]} ##{description_array[1]} ##{description_array[2]} ##{description_array[3]}"
   }
   new_tattoo = Tattoo.new(tattoo_hash)
   new_tattoo.save
@@ -69,9 +70,9 @@ end
 
 
 taggings_array = []
-10.times do
+tattoos_array.each do |tattoo|
   tagging_hash = {
-    tattoo: tattoos_array.sample,
+    tattoo: tattoo,
     tag: tags_array.sample
   }
   new_tagging = Tagging.new(tagging_hash)
