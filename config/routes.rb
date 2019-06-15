@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get   '/profile/edit', to: "profile#edit", as: :edit_profile
 
   get   '/profile/:profile_id/places',     to: "places#create",  as: 'user_places'
+  post   '/profile/:profile_id/places',     to: "places#create"
   get   '/profile/:profile_id/places/new', to: "places#new"   ,  as: 'new_user_places'
   get   '/places/:id',                     to: "places#destroy", as: 'place'
 

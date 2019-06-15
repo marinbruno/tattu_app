@@ -1,0 +1,5 @@
+<% unless place.artist.photo.nil? %>
+  <%= cl_image_tag place.artist.photo.photo, height: 100, width: 100, crop: "fill", class: "rounded-lg" %>
+<% end %>
+<h5>Name: <%= place.artist.name %></h5>
+

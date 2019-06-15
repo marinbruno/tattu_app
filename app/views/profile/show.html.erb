@@ -27,20 +27,34 @@
     <% if Artist.exists?(user_id: @profile) %>
       <div class="shadow p-2">
         <h2 class="text-center">My Places</h2>
-        <ul>
-          <%= @profile.artist.places.each do |place| %>
-            <li> <%= place.address %></li>
+        <ul class="list-group">
+          <% if @profile.artist.places.size.zero?  %>
+            <li class="list-group-item rounded">
+              <p>No place added yet :(</p>
+            </li>
+          <% end %>
+          <% @profile.artist.places.each do |place| %>
+            <li class="list-group-item rounded">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <%= place.address %>
+                </div>
+                <div>
+                  <%= link_to "x", place_path(place), class: "btn btn-danger btn-sm" %>
+                </div>
+              </div>
+            </li>
           <% end %>
         </ul>
-        <h4 class="text-center">Add Place:</h4>
+        <h6 class="text-center mt-3">Add Place:</h6>
         <%= simple_form_for [@profile, @place] do |f| %>
-          <%= f.input :address %>
-          <%= f.submit "Add Place", class: 'btn btn-success btn-block'%>
+          <%= f.input :address, class: "flex-grow-1" %>
+          <%= f.submit "Add Place", class: 'btn btn-secondary btn-block'%>
         <% end %>
 
       </div>
 
-      <div class="shadow p-2">
+      <div class="shadow p-2 mt-3">
         <h2 class="text-center">My tattoos</h2>
         <div class="mb-3">
           <%= link_to "Add Tattoo", new_tattoo_path, class: "btn btn-secondary btn-block" %>
