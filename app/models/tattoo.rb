@@ -10,6 +10,7 @@ class Tattoo < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
   belongs_to :artist
   has_one :user, through: :artist
 

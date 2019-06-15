@@ -37,6 +37,7 @@ const fitMapToMarkers = (map, markers) => {
 const initMapbox = () => {
   if (mapElement) {
     const map = buildMap();
+    // map.scrollZoom.disable(); // disbale scroll on map
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);

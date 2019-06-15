@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
           lat: place.latitude,
           lng: place.longitude,
           infoWindow: render_to_string(partial: "infowindow", locals: { place: place }),
-          image_url: helpers.asset_url('dagger.svg')
+          image_url: helpers.asset_url('heart.svg')
         }
       end
     end
@@ -20,7 +20,7 @@ class ArtistsController < ApplicationController
         lat: place.latitude,
         lng: place.longitude,
         infoWindow: render_to_string(partial: "infowindow", locals: { place: place }),
-        image_url: helpers.asset_url('dagger.svg')
+        image_url: helpers.asset_url('heart.svg')
       }
     end
   end
