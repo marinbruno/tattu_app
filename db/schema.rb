@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_143330) do
+ActiveRecord::Schema.define(version: 2019_06_15_145327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 2019_06_13_143330) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.index ["photoable_type", "photoable_id"], name: "index_photos_on_photoable_type_and_photoable_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "address"
+    t.bigint "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["artist_id"], name: "index_places_on_artist_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -79,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_143330) do
   end
 
   add_foreign_key "artists", "users"
+  add_foreign_key "places", "artists"
   add_foreign_key "taggings", "tags"
   add_foreign_key "taggings", "tattoos"
   add_foreign_key "tattoos", "artists"

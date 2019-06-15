@@ -2,36 +2,51 @@
   <div class="col-12 mt-3">
     <div class="shadow p-2 d-flex mb-3">
       <div>
-        <% unless @user.photo.nil? %>
-          <%= cl_image_tag @user.photo.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+        <% unless @profile.photo.nil? %>
+          <%= cl_image_tag @profile.photo.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
         <% end %>
       </div>
       <div class="ml-3">
         <div>
-          <h1><%= @user.name %></h1>
-          <p> <strong>Email:</strong> <%= @user.email %> </p>
-          <% if Artist.exists?(user_id: @user) %>
-            <p> <strong>Description:</strong> <%= @user.artist.description %> </p>
-            <p> <strong>Instagram:</strong> <%= @user.artist.instagram_username %> </p>
+          <h1><%= @profile.name %></h1>
+          <p> <strong>Email:</strong> <%= @profile.email %> </p>
+          <% if Artist.exists?(user_id: @profile) %>
+            <p> <strong>Description:</strong> <%= @profile.artist.description %> </p>
+            <p> <strong>Instagram:</strong> <%= @profile.artist.instagram_username %> </p>
           <% end %>
         </div>
       </div>
       <div class="ml-auto">
         <%= link_to "Edit profile", edit_profile_path, class: "btn btn-secondary" %>
-        <% unless Artist.exists?(user_id: @user) %>
+        <% unless Artist.exists?(user_id: @profile) %>
           <%= link_to "I'm an artist too!", new_artist_path, class: "btn btn-secondary" %>
         <% end %>
       </div>
     </div>
 
-    <% if Artist.exists?(user_id: @user) %>
+    <% if Artist.exists?(user_id: @profile) %>
+      <div class="shadow p-2">
+        <h2 class="text-center">My Places</h2>
+        <ul>
+          <%= @profile.artist.places.each do |place| %>
+            <li> <%= place.address %></li>
+          <% end %>
+        </ul>
+        <h4 class="text-center">Add Place:</h4>
+        <%= simple_form_for [@profile, @place] do |f| %>
+          <%= f.input :address %>
+          <%= f.submit "Add Place", class: 'btn btn-success btn-block'%>
+        <% end %>
+
+      </div>
+
       <div class="shadow p-2">
         <h2 class="text-center">My tattoos</h2>
         <div class="mb-3">
           <%= link_to "Add Tattoo", new_tattoo_path, class: "btn btn-secondary btn-block" %>
         </div>
         <div class="tattoo-cards">
-          <% @user.artist.tattoos.each do |tattoo| %>
+          <% @profile.artist.tattoos.each do |tattoo| %>
             <div>
               <%= cl_image_tag tattoo.photo.photo, height: 200, width: 250, crop: "fill" %>
               <div>
