@@ -1,0 +1,5 @@
+<% unless place.artist.photo.nil? %>
+  <%= cl_image_tag place.artist.photo.photo, height: 100, width: 100, crop: "fill", class: "rounded-lg" %>
+<% end %>
+<%= link_to place.artist.name, artist_path(place.artist), class: " mt-1 btn btn-secondary btn-sm" %>
+

@@ -1,9 +1,10 @@
 class ProfileController < ApplicationController
   def show
     if params.has_key?(:id)
-      @user = User.find(params[:id])
+      @profile = User.find(params[:id])
     else
-      @user = current_user
+      @profile = current_user
+      @place = Place.new
     end
   end
 

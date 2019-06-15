@@ -1,10 +1,28 @@
 class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
+    @artists.each do |artist|
+      @markers = artist.places.map do |place|
+        {
+          lat: place.latitude,
+          lng: place.longitude,
+          infoWindow: render_to_string(partial: "infowindow", locals: { place: place }),
+          image_url: helpers.asset_url('heart.svg')
+        }
+      end
+    end
   end
 
   def show
     @artist = Artist.find(params[:id])
+    @markers = @artist.places.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { place: place }),
+        image_url: helpers.asset_url('heart.svg')
+      }
+    end
   end
 
   def new
