@@ -21,7 +21,9 @@
               <%= artist_form.input :instagram_username %>
             <% end %>
           <% end %>
-          <%= f.submit   %>
+          <%= f.submit "Save", class: "btn btn-secondary "   %>
+          <%= link_to 'Back', profile_path, class: 'btn btn-secondary' %>
+          <%= link_to 'Delete Artist Profile', artist_path(current_user.artist), method: :delete, class: 'btn btn-secondary' %>
         </div>
       </div>
     <% end %>
