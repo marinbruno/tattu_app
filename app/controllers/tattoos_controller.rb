@@ -49,7 +49,7 @@ class TattoosController < ApplicationController
   def destroy
     @tattoo.destroy
 
-    redirect_to users_path(@artist)
+    redirect_to profile_path(current_user)
   end
 
   private

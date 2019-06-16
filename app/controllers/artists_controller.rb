@@ -52,6 +52,12 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def destroy
+    @artist = current_user.artist
+    @artist.destroy
+    redirect_to profile_path(current_user)
+  end
+
   private
 
   def artist_params
