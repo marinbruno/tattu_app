@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-12 mt-3">
-    <div class="shadow p-2 d-flex mb-3">
+    <div class="p-2 d-flex mb-3">
       <div>
         <% unless @artist.photo.nil? %>
           <%= cl_image_tag @artist.photo.photo, height: 200, width: 200, crop: "fill", class: "avatar" %>
@@ -16,15 +16,19 @@
       </div>
     </div>
 
-    <div class="shadow p-2">
-      <h2 class="text-center">My tattoos</h2>
+    <div class=" p-2">
+      <h3 class="text-left ml-3">Portfolio</h3>
       <div class="tattoo-cards">
         <% @artist.tattoos.each do |tattoo| %>
           <div>
             <%= link_to cl_image_tag( tattoo.photo.photo, height: 200, width: 200, crop: "fill",  class:"artist-tattoo-card"), tattoo_path(tattoo) %>
-            <div>
-              <%= tattoo.description %>
-            </div>
+           <div class="artist-card-tags">
+            <% tattoo.tags.each do |tag| %>
+              <div class="tattoo-tag">
+                <span class="<%= tag.css %>"><%= tag.name %></span>
+              </div>
+            <% end %>
+          </div>
           </div>
         <% end %>
       </div>

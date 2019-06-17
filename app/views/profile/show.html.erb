@@ -17,7 +17,9 @@
         </div>
       </div>
       <div class="ml-auto">
-        <%= link_to "Edit profile", edit_profile_path, class: "btn btn-secondary" %>
+        <%= link_to edit_profile_path do %>
+          <%= image_tag "pencil.png" %>
+        <% end %>
         <% unless Artist.exists?(user_id: @profile) %>
           <%= link_to "I'm an artist too!", new_artist_path, class: "btn btn-secondary" %>
         <% end %>
@@ -26,7 +28,7 @@
 
     <% if Artist.exists?(user_id: @profile) %>
       <div class="shadow p-2">
-        <h2 class="text-center">My Places</h2>
+        <h2 class="text-center">My Places </h2>
         <ul class="list-group">
           <% if @profile.artist.places.size.zero?  %>
             <li class="list-group-item rounded">
@@ -71,7 +73,9 @@
                 <% end %>
               </div>
               <div>
-                <%= link_to "Edit", edit_tattoo_path(tattoo), class: "btn btn-secondary btn-block" %>
+                <%= link_to edit_tattoo_path(tattoo) do %>
+                  <%= image_tag "pencil.png" %>
+                <% end %>
               </div>
             </div>
           <% end %>
