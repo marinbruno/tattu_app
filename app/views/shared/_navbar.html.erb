@@ -40,7 +40,7 @@
           <%= link_to "Artists", artists_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown pl-2">
 
             <%= cl_image_tag current_user.image ,class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: "40", width: "40", crop: :thumb %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
