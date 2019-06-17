@@ -3,7 +3,7 @@
     <div class="shadow p-2 d-flex mb-3">
       <div>
         <% unless @artist.photo.nil? %>
-          <%= cl_image_tag @artist.photo.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+          <%= cl_image_tag @artist.photo.photo, height: 200, width: 200, crop: "fill", class: "avatar" %>
         <% end %>
       </div>
       <div class="ml-3">
@@ -21,7 +21,7 @@
       <div class="tattoo-cards">
         <% @artist.tattoos.each do |tattoo| %>
           <div>
-            <%= link_to cl_image_tag( tattoo.photo.photo, height: 200, width: 200, crop: "fill"), tattoo_path(tattoo) %>
+            <%= link_to cl_image_tag( tattoo.photo.photo, height: 200, width: 200, crop: "fill",  class:"artist-tattoo-card"), tattoo_path(tattoo) %>
             <div>
               <%= tattoo.description %>
             </div>

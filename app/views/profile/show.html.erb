@@ -62,7 +62,7 @@
         <div class="tattoo-cards">
           <% @profile.artist.tattoos.each do |tattoo| %>
             <div>
-              <%= cl_image_tag tattoo.photo.photo, height: 200, width: 250, crop: "fill" %>
+              <%= cl_image_tag tattoo.photo.photo, height: 200, width: 250, crop: "fill", class:"artist-tattoo-card" %>
               <div>
                 <% if tattoo.description.nil? %>
                   <p style="color: transparent"> - </p>
