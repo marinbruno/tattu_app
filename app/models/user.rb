@@ -10,9 +10,11 @@ class User < ApplicationRecord
 
   has_one :photo, as: :photoable, dependent: :destroy
 
+  DEFAULT_PHOTO = "default-avatar"
+
   def image
-    photo.photo
+    photo.nil? ? DEFAULT_PHOTO : photo.photo
   end
 
-  accepts_nested_attributes_for :photo, :artist
+  accepts_nested_attributes_for :photo, :artist, allow_destroy: true
 end
