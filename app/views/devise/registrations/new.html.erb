@@ -1,25 +1,39 @@
-<h2>Sign up</h2>
+<% resource.build_photo %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="signup-form-container">
+  <div class="signup-inputs-actions col-12 col-sm-4 my-3">
+    <h2>Join us!</h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <div class="form-inputs">
+        <%= f.input :name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.simple_fields_for :photo do |pf| %>
+          <% unless resource.image.filename.nil? %>
+            <%= cl_image_tag resource.image, height: 145, width: 300, crop: :fill %>
+          <% end %>
+          <%= pf.input :photo, as: :file %>
+          <%= pf.input :photo_cache, as: :hidden %>
+        <% end %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class:"btn btn-dark btn-lg btn-block" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
