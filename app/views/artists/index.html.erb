@@ -8,7 +8,7 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
-
+  <h1 class="text-center my-3">Our artists</h1>
   <div class="artist-cards">
     <% @artists.each do |artist| %>
       <div class="card-artist">
@@ -17,9 +17,7 @@
             <%= cl_image_tag artist.image, class:"avatar", width: 130, height: 130, crop: :thumb %>
           <% end %>
           <div class="artist-name">
-            <%= link_to artist_path(artist, class:"btn") do %>
-              <p><%= artist.name %></p>
-            <% end %>
+            <%= link_to artist.name, artist_path(artist) , class:"btn" %>
           </div>
         </div>
         <div class="artist-card-infos">
