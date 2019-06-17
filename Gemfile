@@ -12,6 +12,7 @@ gem 'bootstrap'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'geocoder'
+gem 'grammer', '~> 0.3.1.edge'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
@@ -20,6 +21,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'pg_search'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -33,4 +35,3 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
