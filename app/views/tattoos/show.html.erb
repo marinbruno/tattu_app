@@ -1,5 +1,5 @@
 <div class="tattoo-show-container my-3">
-  <div class="tattoo-show">
+  <div class="tattoo-show mb-3">
     <div class="tattoo-photo">
       <%= cl_image_tag @tattoo.image, height: 450, crop: :fill, class:"rounded" %>
     </div>
@@ -32,9 +32,14 @@
       </div>
     </div>
   </div>
-
-  <div class="related-tattoos">
+  <div class="related-tattoos mt-3 p-2">
     <!-- insert tag related tattoos -->
+    <h3> Related tattoos </h3>
+    <% @relate_tattoos.each do |t| %>
+      <%= link_to tattoo_path(t) do %>
+      <%= cl_image_tag t.image, height: 150, crop: :fill, class:"rounded" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

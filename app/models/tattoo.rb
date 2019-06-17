@@ -1,15 +1,16 @@
 class Tattoo < ApplicationRecord
   include PgSearch
   pg_search_scope :search_by_all,
-    against: [:description],
-    associated_against: {
-      artist: :description,
-      user: :name,
-      tags: :name
-    },
-    using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
-    }
+                  against: [:description],
+                  associated_against: {
+                    artist: :description,
+                    user: :name,
+                    tags: :name,
+                    places: :address
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   belongs_to :artist
   has_one :user, through: :artist
@@ -18,7 +19,7 @@ class Tattoo < ApplicationRecord
 
   has_many :taggings, dependent: :destroy
   has_one :photo, as: :photoable, dependent: :destroy
-
+  has_many :places, through: :artist
   has_many :tags, through: :taggings
 
   delegate :image, to: :artist, prefix: true

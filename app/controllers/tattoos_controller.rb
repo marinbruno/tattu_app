@@ -11,7 +11,17 @@ class TattoosController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @tags = @tattoo.tags
+
+    results = []
+    @tags.each do |tag|
+      results << Tattoo.search_by_all(tag.name)
+    end
+    results = results.flatten
+
+    @relate_tattoos = results.first(4)
+  end
 
   def new
     @tattoo = Tattoo.new
