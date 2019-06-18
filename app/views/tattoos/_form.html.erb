@@ -26,7 +26,9 @@
         </div>
       </div>
       <%= f.submit "Save Tattoo", class: "btn btn-secondary" %>
-      <%= link_to "Delete Tattoo", tattoo_path(tattoo), method: :delete, class: "btn btn-danger" %>
+      <% unless tattoo.id.nil? %>
+        <%= link_to "Delete Tattoo", tattoo_path(tattoo), method: :delete, class: "btn btn-danger" %>
+      <% end %>
     <% end %>
   </div>
 </div>
