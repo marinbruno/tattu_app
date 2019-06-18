@@ -1,9 +1,14 @@
 require 'faker'
 
+puts 'Destroying tattoos....'
 Tattoo.destroy_all
+puts 'Destroying artists....'
 Artist.destroy_all
+puts 'Destroying users....'
 User.destroy_all
+puts 'Destroying tags....'
 Tag.destroy_all
+puts 'Destroying taggings....'
 Tagging.destroy_all
 
 users_array = []
@@ -51,7 +56,8 @@ tags_names = ['Realism', 'Abstract', 'Neo Traditional', 'Blackwork', 'Graffiti',
 usernames_array.each do |ig_username|
   puts 'Creating an artist...'
   new_artist = Artist.new(instagram_username: ig_username)
-  new_artist.user = User.new(name: new_artist.ig.full_name)
+  puts 'Creating his user model...'
+  new_artist.user = User.new(name: new_artist.ig.full_name, email: "#{ig_username}@fakemail.com", password: '123456')
   new_artist.description = new_artist.ig.biography
   media_array = []
   new_artist.ig.media.each do |media_object|
@@ -63,13 +69,17 @@ usernames_array.each do |ig_username|
       description: "##{description_array[0]} ##{description_array[1]} ##{description_array[2]} ##{description_array[3]}",
       artist: new_artist
     }
+    puts 'Creating one of the tattoos...'
     new_tattoo = Tattoo.new(tattoo_hash)
+    puts 'Creating the tattoo photo....'
     new_tattoo_photo = Photo.new(remote_photo_url: media.image_url)
     new_tattoo.photo = new_tattoo_photo
+    puts 'Creating the tattoo\'s tag...'
     new_tattoo_tag = Tag.new(name: tags_names.sample)
     new_tattoo.save!
   end
   new_artist.save!
+  puts new_artist.errors.messages
 end
 
 user_photo_url = 'https://images.unsplash.com/photo-1481882466320-51765fd9fe21'
