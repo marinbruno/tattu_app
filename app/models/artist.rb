@@ -13,6 +13,7 @@ class Artist < ApplicationRecord
   accepts_nested_attributes_for :photo
 
   delegate :image, to: :user
+  delegate :image=, to: :user
   delegate :name, to: :user
   delegate :name=, to: :user
   delegate :email, to: :user
