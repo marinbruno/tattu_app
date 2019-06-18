@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   get   '/profile/:profile_id/places/new', to: "places#new"   ,  as: 'new_user_places'
   get   '/places/:id',                     to: "places#destroy", as: 'place'
 
+  get '/tags/:id', to: "tags#show", as: 'tag'
   get   '/tattoos/:id/tags', to: "taggings#new", as: :tags
   put   '/tattoos/:id/tags', to: "taggings#update"
   patch '/tattoos/:id/tags', to: "taggings#update"
+
 
   resources :tattoos
   resources :artists
