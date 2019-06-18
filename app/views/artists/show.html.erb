@@ -16,21 +16,14 @@
       </div>
     </div>
 
-    <div class=" p-2">
+    <div class="p-2">
       <h3 class="text-left ml-3">Portfolio</h3>
       <div class="tattoo-cards">
         <% @artist.tattoos.each do |tattoo| %>
-          <div>
-            <%= link_to cl_image_tag( tattoo.photo.photo, height: 200, width: 200, crop: "fill",  class:"artist-tattoo-card"), tattoo_path(tattoo) %>
-           <div class="artist-card-tags">
-            <% tattoo.tags.each do |tag| %>
-              <div class="tattoo-tag">
-                <%= link_to tag_path(tag) do %>
-                  <span class="<%= tag.css %>"><%= tag.name %></span>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+          <div class="tattoo-artist-relative">
+            <div class="tattoo-card">
+              <%= link_to cl_image_tag( tattoo.photo.photo, class:"tattoo-card-image"), tattoo_path(tattoo) %>
+            </div>
           </div>
         <% end %>
       </div>
