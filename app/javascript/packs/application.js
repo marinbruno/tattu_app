@@ -6,3 +6,6 @@ import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 import { tattooGridInit } from '../components/tattoo_grid';
 tattooGridInit();
+import { tattooArtistGridInit } from '../components/tattoo_artist_grid';
+tattooArtistGridInit();
+

@@ -1,10 +1,10 @@
 import * as Masonry from 'masonry-layout';
 
-const tattooGridInit = () => {
+const tattooArtistGridInit = () => {
   const msnry = new Masonry( '.tattoo-cards', {
-    itemSelector: '.tattoo-relative',
+    itemSelector: '.tattoo-artist-relative',
     gutter: 10
   });
 }
 
-export { tattooGridInit };
+export { tattooArtistGridInit };
