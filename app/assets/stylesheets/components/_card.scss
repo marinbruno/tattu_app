@@ -111,3 +111,7 @@
     transform: scale(1.2);
   }
 }
+
+.hover-unstyled:focus {
+  box-shadow: none;
+}
