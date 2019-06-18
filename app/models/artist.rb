@@ -14,6 +14,9 @@ class Artist < ApplicationRecord
 
   delegate :image, to: :user
   delegate :name, to: :user
+  delegate :name=, to: :user
+  delegate :email, to: :user
+  delegate :password, to: :user
 
   include Grammer
   grammed_by :instagram_username, on: :ig

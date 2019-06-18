@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
 Tattoo.destroy_all
@@ -26,81 +19,64 @@ users_array = []
   users_array << new_user
 end
 
+usernames_array = ["victoroctaviano",
+                  "rodrigotas",
+                  "dudublacktattoo",
+                  "Koezukatattoo",
+                  "sousa.tattoo",
+                  "andrecruztattoo",
+                  "ohjessica_o",
+                  "brisaissa",
+                  "asduarte_89",
+                  "skazxim",
+                  "bricegomes",
+                  "maxvorax",
+                  "pedrozanjos",
+                  "casdecarvalho",
+                  "angelojolies",
+                  "lucasm_tattoo",
+                  "theteabag",
+                  "tonyvilella",
+                  "ubiratanamorim",
+                  "diegoferrink",
+                  "tampatattoo",
+                  "reh.tattoo",
+                  "william.marin_ink",
+                  "godo_art",
+                  "mscaranari",
+                  "joaobeber",
+                  "francisco_lim"]
 artists_array = []
-10.times do
+tags_names = ['Realism', 'Abstract', 'Neo Traditional', 'Blackwork', 'Graffiti', 'Old School', 'Tribal']
+usernames_array.each do |ig_username|
   puts 'Creating an artist...'
-  user_hash = {
-    name: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: '123456'
-  }
-  new_user = User.new(user_hash)
-  new_user.save
-
-  artist_hash = {
-    description: Faker::Sports::Football.position,
-    user: new_user
-  }
-  new_artist = Artist.new(artist_hash)
-  new_artist.save
-  artists_array << new_artist
-end
-
-
-tattoos_array = []
-20.times do
-  puts 'Creating a tattoo...'
-  description_array = Faker::Hipster.words(4, true)
-  tattoo_hash = {
-    artist: artists_array.sample,
-    description: "##{description_array[0]} ##{description_array[1]} ##{description_array[2]} ##{description_array[3]}"
-  }
-  new_tattoo = Tattoo.new(tattoo_hash)
-  new_tattoo.save
-  tattoos_array << new_tattoo
-end
-
-tags_names = ['3D', 'Abstract', 'Ambigram', 'Black And Grey', 'Graffiti', 'Old School', 'Tribal']
-tags_array = []
-tags_names.each do |tag|
-  tag = Tag.new({name: tag})
-  tag.save
-  tags_array << tag
-end
-
-
-taggings_array = []
-tattoos_array.each do |tattoo|
-  tagging_hash = {
-    tattoo: tattoo,
-    tag: tags_array.sample
-  }
-  new_tagging = Tagging.new(tagging_hash)
-  new_tagging.save
-  taggings_array << new_tagging
+  new_artist = Artist.new(instagram_username: ig_username)
+  new_artist.user = User.new(name: new_artist.ig.full_name)
+  new_artist.description = new_artist.ig.biography
+  media_array = []
+  new_artist.ig.media.each do |media_object|
+    media_array << media_object
+  end
+  media_array.each do |media|
+    description_array = Faker::Hipster.words(4, true)
+    tattoo_hash = {
+      description: "##{description_array[0]} ##{description_array[1]} ##{description_array[2]} ##{description_array[3]}",
+      artist: new_artist
+    }
+    new_tattoo = Tattoo.new(tattoo_hash)
+    new_tattoo_photo = Photo.new(remote_photo_url: media.image_url)
+    new_tattoo.photo = new_tattoo_photo
+    new_tattoo_tag = Tag.new(name: tags_names.sample)
+    new_tattoo.save!
+  end
+  new_artist.save!
 end
 
 user_photo_url = 'https://images.unsplash.com/photo-1481882466320-51765fd9fe21'
-artist_photo_url = 'https://images.unsplash.com/photo-1550364387-2893ac373664'
-tattoo_photo_url = 'https://images.unsplash.com/photo-1521308452854-e037c0062a1e'
 
 users_array.each do |user|
   puts 'Saving photo to an user...'
   user_photo = Photo.new(remote_photo_url: user_photo_url)
   user.photo = user_photo
   user.save
-end
-
-artists_array.each do |artist|
-  puts 'Saving photo to an artist...'
-  artist_photo = Photo.new(remote_photo_url: artist_photo_url)
-  artist.user.photo = artist_photo
-  artist.save
-end
-
-tattoos_array.each do |tattoo|
-  puts 'Saving photo to a tattoo...'
-  tattoo_photo = Photo.new(remote_photo_url: tattoo_photo_url)
-  tattoo.photo = tattoo_photo
-  tattoo.save
 end
