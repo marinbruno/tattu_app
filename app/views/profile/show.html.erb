@@ -55,12 +55,8 @@
         <% end %>
 
       </div>
-
       <div class="shadow p-2 mt-3">
         <h2 class="text-center">My tattoos</h2>
-        <div class="mb-3">
-          <%= link_to "Add Tattoo", new_tattoo_path, class: "btn btn-secondary btn-block" %>
-        </div>
         <div class="tattoo-cards">
           <% @profile.artist.tattoos.each do |tattoo| %>
             <div>
@@ -72,13 +68,16 @@
                   <p> <%= tattoo.description %></p>
                 <% end %>
               </div>
-              <div>
+              <div class="align-item-">
                 <%= link_to edit_tattoo_path(tattoo) do %>
                   <%= image_tag "pencil.png" %>
                 <% end %>
               </div>
             </div>
           <% end %>
+        </div>
+        <div class="mb-3">
+          <%= link_to "Add Tattoo", new_tattoo_path, class: "btn btn-secondary btn-block" %>
         </div>
       </div>
     <% end %>

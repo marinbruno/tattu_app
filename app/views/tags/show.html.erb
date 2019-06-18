@@ -1,4 +1,13 @@
 <div class="card-container my-10">
+  <div class="tags-names">
+    <% @tags.each do |tag| %>
+
+        <%= link_to tag_path(tag) do %>
+        <span class="<%= tag.css %> m-3"><%= tag.name %></span>
+        <% end %>
+    <% end %>
+  </div>
+  <h1 class= "p-3 "><%= @tag.name %></h1>
   <div class="tattoo-cards">
     <% @tattoos.each do |tattoo| %>
         <div class="tattoo-relative">
@@ -10,9 +19,7 @@
               <div class="tattoo-card-tags">
                 <% tattoo.tags.each do |tag| %>
                   <div class="tattoo-tag">
-                    <%= link_to tag_path(tag) do %>
                     <span class="<%= tag.css %>"><%= tag.name %></span>
-                    <% end %>
                   </div>
                 <% end %>
               </div>

@@ -26,7 +26,9 @@
       <div class="tattoo-tags">
         <% @tattoo.tags.each do |tag| %>
           <div class="tattoo-tags-tag">
-            <span class="<%= tag.css %>"><%= tag.name %></span>
+            <%= link_to tag_path(tag) do %>
+              <span class="<%= tag.css %>"><%= tag.name %></span>
+            <% end %>
           </div>
         <% end %>
       </div>
