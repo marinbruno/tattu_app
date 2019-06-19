@@ -2,47 +2,54 @@ import InfiniteScroll from 'infinite-scroll';
 
 const infScrollInit = () => {
   const loadButton = document.querySelector(".scroll-load-button");
-  const loadButtonHref = loadButton.getAttribute("href");
-  const loadPath = loadButtonHref.substring(0, loadButtonHref.length - 1);
-  debugger
 
-  const nextPage = () => {
+  if(loadButton) {
     const loadButtonHref = loadButton.getAttribute("href");
-    return parseInt(loadButtonHref.substring(loadButtonHref.length - 1, loadButtonHref.length));
-  }
+    const loadPath = loadButtonHref.substring(0, loadButtonHref.length - 1);
 
-  const checkLoader = (event) => {
-    const documentHeight = document.body.scrollHeight;
-    const bottomDistanceFromTop = window.innerHeight + window.scrollY;
-    const distanceFromBottom = documentHeight - bottomDistanceFromTop;
+    const nextPage = () => {
+      const loadButtonHref = loadButton.getAttribute("href");
+      return parseInt(loadButtonHref.substring(loadButtonHref.length - 1, loadButtonHref.length));
+    }
 
-    const loadThreshold = 500;
-    const should_load = distanceFromBottom < loadThreshold;
+    const checkLoader = (event) => {
+      const documentHeight = document.body.scrollHeight;
+      const bottomDistanceFromTop = window.innerHeight + window.scrollY;
+      const distanceFromBottom = documentHeight - bottomDistanceFromTop;
 
-    if(should_load) {
-      window.removeEventListener("scroll", checkLoader);
+      const loadThreshold = 300;
+      const should_load = distanceFromBottom < loadThreshold;
 
-      var docParser = new DOMParser();
-      fetch(loadButton.getAttribute("href"))
-        .then(response => response.text())
-        .then(data => {
-          loadButton.setAttribute("href", `${loadPath}${nextPage() + 1}`)
-          const dom = docParser.parseFromString(data, "text/html");
-          const items = dom.querySelectorAll(".tattoo-relative");
-          console.log(items)
-          if(items.length === 0) {
-            window.colc.append(items);
-            window.addEventListener("scroll", checkLoader);
-          } else {
-            throw Error("No more tattoos")
-          }
-        }).catch((data) => {
-          console.log(data)
-        });
+      if(should_load) {
+        window.removeEventListener("scroll", checkLoader);
+
+        var docParser = new DOMParser();
+        fetch(loadButton.getAttribute("href"))
+          .then(response => response.text())
+          .then(data => {
+            loadButton.setAttribute("href", `${loadPath}${nextPage() + 1}`)
+            const dom = docParser.parseFromString(data, "text/html");
+            const items = dom.querySelectorAll(".tattoo-relative");
+            console.log(items)
+            if(items.length === 0) {
+              throw Error("No more tattoos")
+            } else {
+              window.colc.append(items);
+              // setTimeout(() => {
+              //   items.forEach((item) => {
+              //     item.classList.remove("pending-insert");
+              //   })
+              // }, 500);
+              window.addEventListener("scroll", checkLoader);
+            }
+          }).catch((data) => {
+            console.log(data)
+          });
+      };
     };
-  };
 
-  window.addEventListener("scroll", checkLoader)
+    window.addEventListener("scroll", checkLoader)
+  }
 }
 
 
