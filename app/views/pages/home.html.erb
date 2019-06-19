@@ -1,17 +1,55 @@
 <% content_for(:navbar_class, "navbar-home") %>
-
+<div>
 <div class="banner">
   <div class="banner-content">
     <h1>Find your ideal tattoo. Seamlessly.</h1>
     <p>Search for the one that best matches your personality.</p>
     <div class= "search">
-      <%= form_tag tattoos_path, method: :get do %>
+      <%= form_tag tattoos_path, class: "form-inline", method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-        size: 25,
+        size: 30,
         class: "input-xxlarge",
-        placeholder: "Find a tattoo"%>
+        placeholder: "Type an artist, a style or a localization"%>
+      <div class=" submit col-auto my-1 p-1">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
       <% end %>
     </div>
   </div>
+  <h2 class= "more-tattoos"> Check it out </h2>
 </div>
+<div class="tattoo-cards pl-5" id="tattoos-home">
+    <% @tattoos.sample(5).each do |tattoo| %>
+        <div class="tattoo-relative">
+          <div class="tattoo-card">
+            <%= link_to(tattoo_path(tattoo)) do %>
+              <%= cl_image_tag tattoo.image, class:"tattoo-card-image" %>
+            <% end %>
+            <div class="tattoo-card-infos">
+              <div class="tattoo-card-tags">
+                <% tattoo.tags.each do |tag| %>
+                  <div class="tattoo-tag">
+                    <%= link_to tag_path(tag) do %>
+                    <span class="<%= tag.css %>"><%= tag.name %></span>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="tattoo-artist">
+                <%= link_to(artist_path(tattoo.artist), class:"btn hover-unstyled") do %>
+                  <%= cl_image_tag tattoo.artist_image, class:"avatar", width: 50, height: 50, crop: :thumb %>
+                <% end %>
+              </div>
+              <div>
+                <p class="tattoo-artist-name">
+                  <%= tattoo.artist_name %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+<div>
