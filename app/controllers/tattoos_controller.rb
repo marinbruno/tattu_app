@@ -3,11 +3,13 @@ class TattoosController < ApplicationController
   before_action :set_tattoo, except: [:index, :new, :create]
   before_action :set_artist, only: [:create, :destroy]
 
+  include Pagy::Backend
+
   def index
     if params[:query].present?
-      @tattoos = Tattoo.search_by_all(params[:query]).shuffle
+      @pagy, @tattoos = pagy(Tattoo.search_by_all(params[:query]).shuffle, page: params[:page])
     else
-      @tattoos = Tattoo.all.shuffle
+      @pagy, @tattoos = pagy(Tattoo.all.shuffle, page: params[:page])
     end
   end
 

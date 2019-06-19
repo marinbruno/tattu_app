@@ -1,5 +1,5 @@
  .card-container {
-  margin-bottom: 16px;
+
 }
 
 .tattoo-cards {
@@ -8,6 +8,13 @@
   // grid-gap: 16px;
   // padding: 16px;
 }
+
+/* Using floats */
+.grid-col {
+  float: left;
+  width: 360px;
+}
+
 
 @media(max-width: 992px) {
   .tattoo-cards {
@@ -28,7 +35,7 @@
 
 .tattoo-card {
   overflow: hidden;
-  // height: 400px;
+  min-height: 200px;
   border-radius: 10px;
   position: relative;
 }
