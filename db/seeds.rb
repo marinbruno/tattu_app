@@ -66,27 +66,28 @@ artists_array = []
 usernames_array.each do |ig_username|
   puts 'Creating an artist...'
   new_artist = Artist.new(instagram_username: ig_username)
-  puts 'Creating his user model...'
-  new_artist.user = User.new(name: new_artist.ig.full_name, email: "#{ig_username}@fakemail.com", password: '123456')
-  new_artist.description = new_artist.ig.biography
-  new_artist.user.photo = Photo.new(remote_photo_url: new_artist.ig.data.dig('profile_pic_url'))
-  media_array = []
-  new_artist.ig.media.each do |media_object|
-    media_array << media_object
-  end
-  media_array.each do |media|
-    tattoo_hash = {
-      description: media.data.dig('edge_media_to_caption', 'edges', 0, 'node', 'text'),
-      artist: new_artist
-    }
-    puts 'Creating one of the tattoos...'
-    new_tattoo = Tattoo.new(tattoo_hash)
-    puts 'Creating the tattoo photo....'
-    new_tattoo_photo = Photo.new(remote_photo_url: media.image_url)
-    new_tattoo.photo = new_tattoo_photo
-    new_artist.places << Place.new(address: media.data.dig('location', 'name'))
-    new_tattoo.tags << tags_array.sample
-    new_tattoo.save!
-  end
-  new_artist.save!
+  new_artist.save
+  # puts 'Creating his user model...'
+  # new_artist.user = User.new(name: new_artist.ig.full_name, email: "#{ig_username}@fakemail.com", password: '123456')
+  # new_artist.description = new_artist.ig.biography
+  # new_artist.user.photo = Photo.new(remote_photo_url: new_artist.ig.data.dig('profile_pic_url'))
+  # media_array = []
+  # new_artist.ig.media.each do |media_object|
+  #   media_array << media_object
+  # end
+  # media_array.each do |media|
+  #   tattoo_hash = {
+  #     description: media.data.dig('edge_media_to_caption', 'edges', 0, 'node', 'text'),
+  #     artist: new_artist
+  #   }
+  #   puts 'Creating one of the tattoos...'
+  #   new_tattoo = Tattoo.new(tattoo_hash)
+  #   puts 'Creating the tattoo photo....'
+  #   new_tattoo_photo = Photo.new(remote_photo_url: media.image_url)
+  #   new_tattoo.photo = new_tattoo_photo
+  #   new_artist.places << Place.new(address: media.data.dig('location', 'name'))
+  #   new_tattoo.tags << tags_array.sample
+  #   new_tattoo.save!
+  # end
+  # new_artist.save!
 end

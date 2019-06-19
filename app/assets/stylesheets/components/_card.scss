@@ -1,13 +1,23 @@
  .card-container {
-  margin-bottom: 16px;
+
 }
 
 .tattoo-cards {
   // display: grid;
   // grid-template-columns: 1fr 1fr 1fr 1fr;
   // grid-gap: 16px;
-  // padding: 16px;
 }
+
+.body-wrap {
+  padding-bottom: 20vh;
+}
+
+/* Using floats */
+.grid-col {
+  float: left;
+  width: 360px;
+}
+
 
 @media(max-width: 992px) {
   .tattoo-cards {
@@ -28,7 +38,7 @@
 
 .tattoo-card {
   overflow: hidden;
-  // height: 400px;
+  min-height: 200px;
   border-radius: 10px;
   position: relative;
 }
@@ -114,4 +124,18 @@
 
 .hover-unstyled:focus {
   box-shadow: none;
+}
+
+
+.tattoo-relative.pending-insert {
+  position: relative;
+  opacity: 0;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(200px); }
+  to { opacity: 1; transform: translateY(0px); }
+}
+.tattoo-relative {
+  animation: slide-up 0.3s linear 0s;
 }

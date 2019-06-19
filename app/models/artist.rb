@@ -15,15 +15,19 @@ class Artist < ApplicationRecord
   # delegate :image, to: :user
   # delegate :name, to: :user
   # delegate :name=, to: :user
+
+  validates :instagram_username, presence: true
   delegate :email, to: :user
   delegate :password, to: :user
 
   include Grammer
   grammed_by :instagram_username, on: :ig
 
-  DEFAULT_PHOTO = "default-avatar-20190617"
+  def update_instagram_data!
+    GetInstagramDataService.new.parse_info_from_ig(self)
+  end
 
   def image
-    photo.nil? ? DEFAULT_PHOTO : photo.photo
+    photo.photo
   end
 end

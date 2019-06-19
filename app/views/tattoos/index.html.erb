@@ -1,10 +1,13 @@
 <div class="container my-10">
   <div class="tattoo-cards">
+    <div class="grid-col grid-col--1"></div>
+    <div class="grid-col grid-col--2"></div>
+    <div class="grid-col grid-col--3"></div>
     <% @tattoos.each do |tattoo| %>
         <div class="tattoo-relative">
           <div class="tattoo-card">
             <%= link_to(tattoo_path(tattoo)) do %>
-              <%= cl_image_tag tattoo.image, class:"tattoo-card-image" %>
+              <%= cl_image_tag (tattoo.image || image_path("pencil.png")), class:"tattoo-card-image", width: 500, crop: :scale %>
             <% end %>
             <div class="tattoo-card-infos">
               <div class="tattoo-card-tags">
@@ -32,3 +35,4 @@
     <% end %>
   </div>
 </div>
+<%= link_to "Next page", tattoos_path(page: 2), "data-next-page": 2, class: "scroll-load-button" %>

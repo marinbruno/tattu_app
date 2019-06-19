@@ -17,10 +17,10 @@
       <% end %>
     </div>
   </div>
-  <h2 class= "more-tattoos"> Check it out </h2>
+  <h2 class= "more-tattoos"> Style of the week - <%= @tag.name %></h2>
 </div>
 <div class="tattoo-cards pl-5" id="tattoos-home">
-    <% @tattoos.sample(5).each do |tattoo| %>
+    <% @tag.tattoos.first(6).each do |tattoo| %>
         <div class="tattoo-relative">
           <div class="tattoo-card">
             <%= link_to(tattoo_path(tattoo)) do %>
@@ -38,7 +38,7 @@
               </div>
               <div class="tattoo-artist">
                 <%= link_to(artist_path(tattoo.artist), class:"btn hover-unstyled") do %>
-                  <%= cl_image_tag tattoo.artist_image, class:"avatar", width: 50, height: 50, crop: :thumb %>
+                  <%= cl_image_tag tattoo.artist.image, class:"avatar", width: 50, height: 50, crop: :thumb %>
                 <% end %>
               </div>
               <div>

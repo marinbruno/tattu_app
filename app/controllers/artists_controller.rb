@@ -1,14 +1,20 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.all.shuffle
+    @markers = []
     @artists.each do |artist|
-      @markers = artist.places.map do |place|
+      @markers1 = artist.places.map do |place|
         {
           lat: place.latitude,
           lng: place.longitude,
           infoWindow: render_to_string(partial: "infowindow", locals: { place: place }),
           image_url: helpers.asset_url('heart.svg')
         }
+      end
+      if @markers1.size > 0
+        @markers1.each do |mark|
+          @markers << mark
+        end
       end
     end
   end
@@ -29,6 +35,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.new
     @artist.user = current_user
     @artist.save
+
     redirect_to edit_profile_path
   end
 
