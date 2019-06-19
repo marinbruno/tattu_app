@@ -38,7 +38,7 @@
               </div>
               <div class="tattoo-artist">
                 <%= link_to(artist_path(tattoo.artist), class:"btn hover-unstyled") do %>
-                  <%= cl_image_tag tattoo.artist_image, class:"avatar", width: 50, height: 50, crop: :thumb %>
+                  <%= cl_image_tag tattoo.artist.image, class:"avatar", width: 50, height: 50, crop: :thumb %>
                 <% end %>
               </div>
               <div>

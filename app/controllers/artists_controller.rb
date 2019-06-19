@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.all.shuffle
     @artists.each do |artist|
       @markers = artist.places.map do |place|
         {
@@ -29,6 +29,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.new
     @artist.user = current_user
     @artist.save
+
     redirect_to edit_profile_path
   end
 

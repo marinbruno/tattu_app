@@ -5,9 +5,9 @@ class TattoosController < ApplicationController
 
   def index
     if params[:query].present?
-      @tattoos = Tattoo.search_by_all(params[:query])
+      @tattoos = Tattoo.search_by_all(params[:query]).shuffle
     else
-      @tattoos = Tattoo.all
+      @tattoos = Tattoo.all.shuffle
     end
   end
 
