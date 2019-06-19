@@ -11,6 +11,7 @@ class Tattoo < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+  scope :random, -> { order(Arel.sql("random()")) }
 
   belongs_to :artist
   has_one :user, through: :artist
@@ -26,6 +27,6 @@ class Tattoo < ApplicationRecord
   accepts_nested_attributes_for :photo, :taggings, allow_destroy: true
 
   def image
-    photo&.photo
+    photo.photo
   end
 end
