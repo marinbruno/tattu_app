@@ -11,6 +11,7 @@ Tag.destroy_all
 puts 'Destroying taggings....'
 Tagging.destroy_all
 
+user_photo_url = 'https://images.unsplash.com/photo-1481882466320-51765fd9fe21'
 users_array = []
 15.times do
   puts 'Creating an user...'
@@ -20,8 +21,18 @@ users_array = []
     password: '123456'
   }
   new_user = User.new(user_hash)
-  new_user.save
+  new_user.photo = Photo.new(remote_photo_url: user_photo_url)
+  new_user.save!
   users_array << new_user
+end
+
+tags_array = []
+tags_names = ['Realism', 'Abstract', 'Neo Traditional', 'Blackwork', 'Graffiti', 'Old School', 'Tribal']
+tags_names.each do |tag_name|
+  puts 'Creating a new tag....'
+  new_tag = Tag.new(name: tag_name)
+  tags_array << new_tag
+  new_tag.save!
 end
 
 usernames_array = ["victoroctaviano",
@@ -52,21 +63,20 @@ usernames_array = ["victoroctaviano",
                   "joaobeber",
                   "francisco_lim"]
 artists_array = []
-tags_names = ['Realism', 'Abstract', 'Neo Traditional', 'Blackwork', 'Graffiti', 'Old School', 'Tribal']
 usernames_array.each do |ig_username|
   puts 'Creating an artist...'
   new_artist = Artist.new(instagram_username: ig_username)
   puts 'Creating his user model...'
   new_artist.user = User.new(name: new_artist.ig.full_name, email: "#{ig_username}@fakemail.com", password: '123456')
   new_artist.description = new_artist.ig.biography
+  new_artist.user.photo = Photo.new(remote_photo_url: new_artist.ig.data.dig('profile_pic_url'))
   media_array = []
   new_artist.ig.media.each do |media_object|
     media_array << media_object
   end
   media_array.each do |media|
-    description_array = Faker::Hipster.words(4, true)
     tattoo_hash = {
-      description: "##{description_array[0]} ##{description_array[1]} ##{description_array[2]} ##{description_array[3]}",
+      description: media.data.dig('edge_media_to_caption', 'edges', 0, 'node', 'text'),
       artist: new_artist
     }
     puts 'Creating one of the tattoos...'
@@ -74,19 +84,9 @@ usernames_array.each do |ig_username|
     puts 'Creating the tattoo photo....'
     new_tattoo_photo = Photo.new(remote_photo_url: media.image_url)
     new_tattoo.photo = new_tattoo_photo
-    puts 'Creating the tattoo\'s tag...'
-    new_tattoo_tag = Tag.new(name: tags_names.sample)
+    new_artist.places << Place.new(address: media.data.dig('location', 'name'))
+    new_tattoo.tags << tags_array.sample
     new_tattoo.save!
   end
   new_artist.save!
-  puts new_artist.errors.messages
-end
-
-user_photo_url = 'https://images.unsplash.com/photo-1481882466320-51765fd9fe21'
-
-users_array.each do |user|
-  puts 'Saving photo to an user...'
-  user_photo = Photo.new(remote_photo_url: user_photo_url)
-  user.photo = user_photo
-  user.save
 end
