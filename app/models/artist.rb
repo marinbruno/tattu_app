@@ -12,11 +12,11 @@ class Artist < ApplicationRecord
 
   accepts_nested_attributes_for :photo
 
-  validates :instagram_username, presence: true
+  # delegate :image, to: :user
+  # delegate :name, to: :user
+  # delegate :name=, to: :user
 
-  #delegate :image, to: :user
-  delegate :name, to: :user
-  delegate :name=, to: :user
+  validates :instagram_username, presence: true
   delegate :email, to: :user
   delegate :password, to: :user
 
