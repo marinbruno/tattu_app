@@ -26,15 +26,18 @@
 .artist-links {
   display: flex;
   justify-content: center;
+  padding-top: 8px;
 }
-
+.artist-links a{
+  color: black;
+}
 $info-padding: 100px;
 .artist-card-infos {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-top: -$info-padding;
-  height: 180px;
+  height: 200px;
   position: relative;
   padding-top: $info-padding;
   border-radius: 10px;
