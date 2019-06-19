@@ -28,6 +28,6 @@ class Tattoo < ApplicationRecord
   accepts_nested_attributes_for :photo, :taggings, allow_destroy: true
 
   def image
-    photo.photo
+    photo&.photo
   end
 end
