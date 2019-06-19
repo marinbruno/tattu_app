@@ -7,9 +7,9 @@ class TattoosController < ApplicationController
 
   def index
     if params[:query].present?
-      @pagy, @tattoos = pagy(Tattoo.search_by_all(params[:query]).shuffle, page: params[:page])
+      @pagy, @tattoos = pagy(Tattoo.search_by_all(params[:query]).random, page: params[:page])
     else
-      @pagy, @tattoos = pagy(Tattoo.all.shuffle, page: params[:page])
+      @pagy, @tattoos = pagy(Tattoo.random, page: params[:page])
     end
   end
 

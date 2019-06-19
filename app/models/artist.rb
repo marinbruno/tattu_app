@@ -14,9 +14,9 @@ class Artist < ApplicationRecord
 
   validates :instagram_username, presence: true
 
-  #delegate :image, to: :user
-  delegate :name, to: :user
-  delegate :name=, to: :user
+  # delegate :image, to: :user
+  # delegate :name, to: :user
+  # delegate :name=, to: :user
   delegate :email, to: :user
   delegate :password, to: :user
 
