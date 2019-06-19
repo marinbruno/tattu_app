@@ -9,6 +9,13 @@
   // padding: 16px;
 }
 
+/* Using floats */
+.grid-col {
+  float: left;
+  width: 360px;
+}
+
+
 @media(max-width: 992px) {
   .tattoo-cards {
     // grid-template-columns: 1fr 1fr;
@@ -28,7 +35,7 @@
 
 .tattoo-card {
   overflow: hidden;
-  // height: 400px;
+  min-height: 200px;
   border-radius: 10px;
   position: relative;
 }

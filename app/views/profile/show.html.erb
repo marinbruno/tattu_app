@@ -59,19 +59,21 @@
         <h2 class="text-center">My tattoos</h2>
         <div class="tattoo-cards">
           <% @profile.artist.tattoos.each do |tattoo| %>
-            <div>
-              <%= cl_image_tag tattoo.photo.photo, height: 200, width: 250, crop: "fill", class:"artist-tattoo-card" %>
-              <div>
-                <% if tattoo.description.nil? %>
-                  <p style="color: transparent"> - </p>
-                <% else %>
-                  <p> <%= tattoo.description %></p>
-                <% end %>
-              </div>
-              <div class="align-item-">
-                <%= link_to edit_tattoo_path(tattoo) do %>
-                  <%= image_tag "pencil.png" %>
-                <% end %>
+            <div class="tattoo-artist-relative">
+              <div class="tattoo-card">
+                <%= cl_image_tag tattoo.photo.photo, height: 200, width: 250, crop: "fill", class:"artist-tattoo-card" %>
+                <div>
+                  <% if tattoo.description.nil? %>
+                    <p style="color: transparent"> - </p>
+                  <% else %>
+                    <p> <%= tattoo.description %></p>
+                  <% end %>
+                </div>
+                <div class="align-item-">
+                  <%= link_to edit_tattoo_path(tattoo) do %>
+                    <%= image_tag "pencil.png" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           <% end %>
