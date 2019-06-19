@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_one :photo, as: :photoable, dependent: :destroy
 
-  DEFAULT_PHOTO = "default-avatar"
+  DEFAULT_PHOTO = "default-avatar-20190617"
 
   def image
     photo.nil? ? DEFAULT_PHOTO : photo.photo

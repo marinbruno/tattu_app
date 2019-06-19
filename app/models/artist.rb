@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
   has_many :places, dependent: :destroy
 
@@ -13,7 +13,6 @@ class Artist < ApplicationRecord
   accepts_nested_attributes_for :photo
 
   delegate :image, to: :user
-  delegate :image=, to: :user
   delegate :name, to: :user
   delegate :name=, to: :user
   delegate :email, to: :user
