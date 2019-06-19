@@ -5,6 +5,12 @@ const tattooGridInit = () => {
     itemSelector: '.tattoo-relative',
     gutter: 10
   });
+// document.addEventListener('DOMContentLoaded', (event) => {
+//   const msnry = new Masonry( '.tattoo-cards', {
+//     itemSelector: '.tattoo-relative',
+//     gutter: 10
+//   });
+// })
 }
 
 export { tattooGridInit };
