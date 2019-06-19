@@ -8,11 +8,13 @@ class Artist < ApplicationRecord
 
   has_many :tags, -> { distinct }, through: :tattoos
 
-  has_one :photo, as: :avatar, through: :user, dependent: :destroy
+  has_one :photo, as: :photoable, dependent: :destroy
 
   accepts_nested_attributes_for :photo
 
-  delegate :image, to: :user
+  validates :instagram_username, presence: true
+
+  #delegate :image, to: :user
   delegate :name, to: :user
   delegate :name=, to: :user
   delegate :email, to: :user
@@ -20,4 +22,12 @@ class Artist < ApplicationRecord
 
   include Grammer
   grammed_by :instagram_username, on: :ig
+
+  def update_instagram_data!
+    GetInstagramDataService.new.parse_info_from_ig(self)
+  end
+
+  def image
+    photo.photo
+  end
 end
