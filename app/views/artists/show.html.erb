@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container ">
   <div class="col-12 mt-3">
-    <div class="p-2 d-flex mb-3">
+    <div class="p-2 d-flex mb-3 shadow">
       <div>
         <% unless @artist.photo.nil? %>
           <%= cl_image_tag @artist.photo.photo, height: 200, width: 200, crop: "fill", class: "avatar" %>
@@ -9,9 +9,13 @@
       <div class="ml-3">
         <div>
           <h1><%= @artist.name %></h1>
-          <p> <strong>Email:</strong> <%= @artist.user.email %> </p>
-          <p> <strong>Description:</strong> <%= @artist.description %></p>
-          <p> <strong>Instagram:</strong> <%= @artist.instagram_username %></p>
+
+          <p> <%= image_tag "mail.png" %> <%= @artist.user.email %> <%= link_to "https://www.instagram.com/#{@artist.instagram_username}/?hl=pt-br" do %>
+            <i class="fab fa-instagram text-info pl-2"> @<%= @artist.instagram_username %></i>
+            <% end %></p>
+          <p> <strong>Description</strong><br>
+          <%= @artist.description %>
+        </p>
         </div>
       </div>
     </div>

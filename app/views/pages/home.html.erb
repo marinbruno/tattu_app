@@ -17,10 +17,10 @@
       <% end %>
     </div>
   </div>
-  <h2 class= "more-tattoos"> Check it out </h2>
+  <h2 class= "more-tattoos"> Style of the week - <%= @tag.name %></h2>
 </div>
 <div class="tattoo-cards pl-5" id="tattoos-home">
-    <% @tattoos.sample(5).each do |tattoo| %>
+    <% @tag.tattoos.first(6).each do |tattoo| %>
         <div class="tattoo-relative">
           <div class="tattoo-card">
             <%= link_to(tattoo_path(tattoo)) do %>
