@@ -1,3 +1,4 @@
+$banner-padding: 50px;
 .banner {
   height: 100vh;
   display: flex;
@@ -5,6 +6,9 @@
   align-items: center;
   background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), image-url("banner-image2.jpg");
   background-size: cover;
+  margin-bottom: -$banner-padding;
+  position: relative;
+  padding-bottom: $banner-padding;
   h1 {
     color: white;
     font-weight: bold;
@@ -18,10 +22,25 @@
     margin-bottom: 20px;
   }
   .btn {
-    padding: 10px 30px;
+    padding: 5px 20px;
+    border-radius: 10%;
   }
-  .search {
-    width: 150px;
-    margin-top: 10px;
-  }
+}
+#tattoos-home {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+.more-tattoos {
+  position: absolute;
+  bottom: -8px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  height: 110px;
+  width: 100%;
+  background-image: linear-gradient(rgba(255,255,255,0), rgb(255, 255, 255));
+  text-shadow: 1px 1px 0 #000;
 }

@@ -23,7 +23,9 @@
           <% end %>
           <%= f.submit "Save", class: "btn btn-secondary "   %>
           <%= link_to 'Back', profile_path, class: 'btn btn-secondary' %>
+          <% if current_user.artist.nil? %>
           <%= link_to 'Delete Artist Profile', artist_path(current_user.artist), method: :delete, class: 'btn btn-secondary' %>
+          <% end %>
         </div>
       </div>
     <% end %>
