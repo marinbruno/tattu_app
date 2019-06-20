@@ -23,7 +23,7 @@
       </div>
       <div class="ml-3">
         <p class="text-center mt-3"><strong>Contact the artist:</strong><p>
-        <form action="mailto:"<%= @artist.user.email %> method="post" enctype="text/plain">
+        <form action="mailto:"<%= @artist.business_email %> method="post" enctype="text/plain">
           Name:
           <input type="text" name="name" size="15" value="<%= current_user.name %>">
           E-mail:
