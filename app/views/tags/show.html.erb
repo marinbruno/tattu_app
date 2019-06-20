@@ -1,5 +1,6 @@
-<div class="card-container text-center ">
-  <div class="tags-names">
+<div class="container my-10 ">
+
+  <div class="tags-names text-center">
     <% @tags.each do |tag| %>
 
         <%= link_to tag_path(tag) do %>
@@ -8,7 +9,10 @@
     <% end %>
   </div>
   <h1 class= "p-3 "><%= @tag.name %></h1>
-  <div class="tattoo-cards ">
+  <div class="tattoo-cards justify-content-center">
+    <div class="grid-col grid-col--1"></div>
+    <div class="grid-col grid-col--2"></div>
+    <div class="grid-col grid-col--3"></div>
     <% @tattoos.each do |tattoo| %>
         <div class="tattoo-relative">
           <div class="tattoo-card">
