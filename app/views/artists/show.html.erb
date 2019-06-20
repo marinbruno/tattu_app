@@ -1,6 +1,6 @@
 <div class="container ">
   <div class="col-12 mt-3">
-    <div class="p-2 d-flex mb-3 shadow">
+    <div class="p-2 d-flex flex-wrap mb-3 shadow">
       <div>
         <% unless @artist.photo.nil? %>
           <%= cl_image_tag @artist.photo.photo, height: 200, width: 200, crop: "fill", class: "avatar" %>
