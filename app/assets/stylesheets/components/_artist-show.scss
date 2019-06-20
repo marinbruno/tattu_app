@@ -7,13 +7,18 @@
   grid-gap: 16px;
   padding: 16px;
 }
+
+@media(max-width: 768px) {
+  .artist-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 .artist-name {
   font-size: 15px;
   font-weight: bold;
   margin-top: 8px;
   text-decoration-line: none;
-}
-.card-artist {
 }
 
 .image-card {

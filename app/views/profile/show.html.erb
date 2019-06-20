@@ -1,9 +1,9 @@
 <div class="container">
   <div class="col-12 mt-3">
-    <div class="shadow p-2 d-flex mb-3">
+    <div class="shadow p-2 d-flex flex-wrap mb-3">
       <div>
         <% unless @profile.photo.nil? %>
-          <%= cl_image_tag @profile.photo.photo, height: 200, width: 200, crop: "fill", class: "rounded-lg" %>
+          <%= cl_image_tag @profile.photo.photo, height: 200, width: 200, crop: "fill", class: "avatar" %>
         <% end %>
       </div>
       <div class="ml-3">
@@ -48,18 +48,24 @@
             </li>
           <% end %>
         </ul>
-        <h6 class="text-center mt-3">Add Place:</h6>
+        <h5 class="text-center mt-3">Add Place:</h5>
         <%= simple_form_for [@profile, @place] do |f| %>
           <%= f.input :address, class: "flex-grow-1" %>
           <%= f.submit "Add Place", class: 'btn btn-secondary btn-block'%>
         <% end %>
 
       </div>
-      <div class="shadow p-2 mt-3">
+      <div class=" p-2 mt-3">
         <h2 class="text-center">My tattoos</h2>
-        <div class="tattoo-cards">
+        <div class="mb-3">
+          <%= link_to "Add Tattoo", new_tattoo_path, class: "btn btn-secondary btn-block" %>
+        </div>
+        <div class="tattoo-artist-cards">
+          <div class="grid-col grid-col--1"></div>
+          <div class="grid-col grid-col--2"></div>
+          <div class="grid-col grid-col--3"></div>
           <% @profile.artist.tattoos.each do |tattoo| %>
-            <div class="tattoo-artist-relative">
+            <div class="tattoo-artist-relative ml-3">
               <div class="tattoo-card">
                 <%= cl_image_tag tattoo.photo.photo, height: 200, width: 250, crop: "fill", class:"artist-tattoo-card" %>
                 <div>
@@ -77,9 +83,6 @@
               </div>
             </div>
           <% end %>
-        </div>
-        <div class="mb-3">
-          <%= link_to "Add Tattoo", new_tattoo_path, class: "btn btn-secondary btn-block" %>
         </div>
       </div>
     <% end %>

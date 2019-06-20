@@ -22,7 +22,7 @@ class TattoosController < ApplicationController
     end
     results = results.flatten
 
-    @relate_tattoos = results.first(4)
+    @relate_tattoos = results.first(5)
   end
 
   def new

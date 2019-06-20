@@ -1,0 +1,15 @@
+.tattoo-display-container {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.tattoo-display {
+  // height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all .5s ease-in-out;
+}
+
+.tattoo-display:hover {
+  transform: scale(1.2);
+}

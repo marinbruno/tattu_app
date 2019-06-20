@@ -8,6 +8,12 @@
   // grid-gap: 16px;
 }
 
+.tattoo-artist-cards {
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
+  // grid-gap: 16px;
+}
+
 .body-wrap {
   padding-bottom: 20vh;
 }
@@ -16,8 +22,16 @@
 .grid-col {
   float: left;
   width: 360px;
+  // background: black;
 }
 
+.tattoo-artist-cards{
+  .grid-col {
+    float: left;
+    width: 340px;
+    // background: red;
+  }
+}
 
 @media(max-width: 992px) {
   .tattoo-cards {
@@ -51,7 +65,7 @@
 
 .tattoo-artist-relative {
   // position: relative;
-  width: 300px;
+  width: 320px;
   margin-bottom: 8px;
 }
 
