@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     @artists = Artist.all.shuffle
     @markers = []
@@ -57,6 +58,11 @@ class ArtistsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def contact
+    @artist = Artist.find(params[:id])
+    UserMailer.contact(@artist, current_user).deliver_now
   end
 
   def destroy
