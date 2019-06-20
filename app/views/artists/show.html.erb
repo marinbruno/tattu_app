@@ -9,10 +9,14 @@
       <div class="ml-3">
         <div>
           <h1><%= @artist.name %></h1>
-          <p> <% unless @artist.business_email.nil? %>
+          <p><% unless @artist.business_email.nil? %>
                 <%= image_tag "mail.png" %>
                 <%= @artist.business_email %>
               <% end %>
+              <form id="contact_form" action="contact/<%= @artist.id %>" method="post" enctype="text/plain">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <input type="submit" value="Contact the artist" class="btn btn-secondary">
+              </form>
               <%= link_to "https://www.instagram.com/#{@artist.instagram_username}/?hl=pt-br" do %>
             <i class="fab fa-instagram text-info pl-2"> @<%= @artist.instagram_username %></i>
             <% end %></p>
@@ -21,18 +25,6 @@
         </p>
         </div>
       </div>
-      <div class="ml-3">
-        <p class="text-center mt-3"><strong>Contact the artist:</strong><p>
-        <form action="mailto:"<%= @artist.business_email %> method="post" enctype="text/plain">
-          Name:
-          <input type="text" name="name" size="15" value="<%= current_user.name %>">
-          E-mail:
-          <input type="text" name="mail" size="15" value="<%= current_user.email %>">
-          Message:
-          <input type="text" name="comment" size="53"><br><br>
-          <input type="submit" value="Send Message!" class="btn btn-secondary btn-block">
-      </div>
-
     </div>
 
     <div class="p-2">

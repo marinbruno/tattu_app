@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :tattoos
   resources :artists
 
+  post '/artists/contact/:id', to: 'artists#contact'
+
 end
