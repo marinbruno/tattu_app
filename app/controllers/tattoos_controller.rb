@@ -1,4 +1,5 @@
 class TattoosController < ApplicationController
+  skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!, only: [:index, :show], :raise => false
   before_action :set_tattoo, except: [:index, :new, :create]
   before_action :set_artist, only: [:create, :destroy]

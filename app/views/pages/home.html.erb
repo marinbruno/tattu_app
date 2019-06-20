@@ -6,17 +6,14 @@
   <div class="banner-content">
     <h1>Find your ideal tattoo. Seamlessly.</h1>
     <p>Search for the one that best matches your personality.</p>
-    <div class= "search">
-      <%= form_tag tattoos_path, class: "form-inline", method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        size: 30,
-        class: "input-xxlarge",
-        placeholder: "Type an artist, a style or a localization"%>
-      <div class=" submit">
-        <button type="submit" class="btn btn-primary">Search</button>
+    <form action="tattoos" method="get">
+      <div class="input-group mb-3">
+        <input name="query" type="text" class="form-control" placeholder="Search for artist, style, location..." aria-label="Search for artist, style, location..." aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="submit">Go for it!</button>
+        </div>
       </div>
-      <% end %>
-    </div>
+    </form>
+    <%= link_to "or click here and show me ALL the tattoos!!", tattoos_path, class:"font-weight-bold" %>
   </div>
 </div>
