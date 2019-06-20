@@ -6,13 +6,17 @@
 .tattoo-photo {
   max-width: 100%;
   height: auto;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  //box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.tattoo-shadow {
+ box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .tattoo-related-infos {
   background-color: white;
   padding: 23px;
-  width: 17vw;
+  width: 25vw;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 

@@ -28,6 +28,6 @@ class Artist < ApplicationRecord
   end
 
   def image
-    photo.photo
+    photo&.photo || user.image
   end
 end

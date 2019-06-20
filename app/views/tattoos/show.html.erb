@@ -1,14 +1,16 @@
 <div class="tattoo-show-container my-3">
   <div class="tattoo-show mb-3">
-    <div class="tattoo-photo">
-      <%= cl_image_tag @tattoo.image, height: 450, crop: :fill, class:"rounded" %>
+    <div class="tattoo-display-container">
+      <div class="tattoo-photo">
+        <%= cl_image_tag @tattoo.image, height: 550, crop: :fill, class:"rounded tattoo-display tattoo-shadow" %>
+      </div>
     </div>
 
-    <div class="tattoo-related-infos">
+    <div class="tattoo-related-infos ml-3">
       <div class="tattoo-artist-show mb-3">
         <div class="tattoo-artist-image">
           <%= link_to(artist_path(@tattoo.artist)) do %>
-            <%= cl_image_tag @tattoo.artist_image, height: 40, width: 40, crop: :thumb, class:"avatar" %>
+            <%= cl_image_tag @tattoo.artist_image, height: 80, width: 80, crop: :thumb, class:"avatar" %>
           <% end %>
         </div>
 
@@ -34,15 +36,22 @@
       </div>
     </div>
   </div>
-  <div class="related-tattoos mt-3 p-2">
-    <!-- insert tag related tattoos -->
-    <h3>  Related tattoos </h3>
-    <% @relate_tattoos.each do |t| %>
-      <%= link_to tattoo_path(t) do %>
-      <%= cl_image_tag t.image, height: 150, crop: :fill, class:"rounded" %>
-      <% end %>
-    <% end %>
+  <div class="container">
+    <div class="related-tattoos mt-2 p-2">
+      <!-- insert tag related tattoos -->
+      <h5>  Related tattoos </h5>
+      <div class="d-flex">
+        <% @relate_tattoos.each do |t| %>
+          <div class="tattoo-display-container mr-3">
+            <%= link_to tattoo_path(t) do %>
+              <%= cl_image_tag t.image, height: 150, crop: :fill, class:"rounded tattoo-display" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+
 </div>
 
 

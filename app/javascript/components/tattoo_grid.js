@@ -19,11 +19,15 @@
 import Colcade from 'colcade';
 
 const tattooGridInit = () => {
-  const colc = new Colcade( '.tattoo-cards', {
-    columns: '.grid-col',
-    items: '.tattoo-relative'
-  });
-  window.colc = colc;
+  const card = document.querySelector(".tattoo-cards");
+
+  if (card) {
+    const colc = new Colcade( '.tattoo-cards', {
+      columns: '.grid-col',
+      items: '.tattoo-relative'
+    });
+    window.colc = colc;
+  }
 
 }
 
