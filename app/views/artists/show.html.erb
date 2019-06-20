@@ -9,8 +9,11 @@
       <div class="ml-3">
         <div>
           <h1><%= @artist.name %></h1>
-
-          <p> <%= image_tag "mail.png" %> <%= @artist.user.email %> <%= link_to "https://www.instagram.com/#{@artist.instagram_username}/?hl=pt-br" do %>
+          <p> <% unless @artist.business_email.nil? %>
+                <%= image_tag "mail.png" %>
+                <%= @artist.business_email %>
+              <% end %>
+              <%= link_to "https://www.instagram.com/#{@artist.instagram_username}/?hl=pt-br" do %>
             <i class="fab fa-instagram text-info pl-2"> @<%= @artist.instagram_username %></i>
             <% end %></p>
           <p> <strong>Description</strong><br>
