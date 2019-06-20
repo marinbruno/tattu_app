@@ -13,7 +13,7 @@ Tagging.destroy_all
 
 user_photo_url = 'https://images.unsplash.com/photo-1481882466320-51765fd9fe21'
 users_array = []
-15.times do
+3.times do
   puts 'Creating an user...'
   user_hash = {
     name: Faker::Name.name,
@@ -39,29 +39,7 @@ usernames_array = ["victoroctaviano",
                   "rodrigotas",
                   "dudublacktattoo",
                   "Koezukatattoo",
-                  "sousa.tattoo",
-                  "andrecruztattoo",
-                  "ohjessica_o",
-                  "brisaissa",
-                  "asduarte_89",
-                  "skazxim",
-                  "bricegomes",
-                  "maxvorax",
-                  "pedrozanjos",
-                  "casdecarvalho",
-                  "angelojolies",
-                  "lucasm_tattoo",
-                  "theteabag",
-                  "tonyvilella",
-                  "ubiratanamorim",
-                  "diegoferrink",
-                  "tampatattoo",
-                  "reh.tattoo",
-                  "william.marin_ink",
-                  "godo_art",
-                  "mscaranari",
-                  "joaobeber",
-                  "francisco_lim"]
+                  "invitrotattoo"]
 artists_array = []
 usernames_array.each do |ig_username|
   puts 'Creating an artist...'
