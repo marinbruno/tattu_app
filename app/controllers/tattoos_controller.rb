@@ -23,7 +23,7 @@ class TattoosController < ApplicationController
     end
     results = results.flatten
 
-    @relate_tattoos = results.first(5)
+    @relate_tattoos = results.sample(5)
   end
 
   def new
