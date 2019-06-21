@@ -23,6 +23,7 @@ class GetInstagramDataService
       new_tattoo.associate_tag_to_tattoo(artist)
       puts 'Done: tag'
       new_tattoo.save
+      puts new_tattoo.errors.messages
       puts 'Done: tattoo'
     end
     artist.save
