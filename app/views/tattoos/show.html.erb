@@ -1,5 +1,5 @@
 <%= link_to 'Back', :back, class: 'btn btn-secondary bkcbtn' %>
-<div class="tattoo-show-container my-3">
+<div class="tattoo-show-container mt-3 mb-4">
   <div class="tattoo-show mb-3 flex-wrap">
     <div class="tattoo-display-container">
       <div class="tattoo-photo">
@@ -37,22 +37,20 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="related-tattoos mt-2 p-2">
-      <!-- insert tag related tattoos -->
-      <h5>  Related tattoos </h5>
-      <div class="d-flex flex-wrap">
-        <% @relate_tattoos.each do |t| %>
-          <div class="tattoo-display-container mr-3 mb-2">
-            <%= link_to tattoo_path(t) do %>
-              <%= cl_image_tag t.image, height: 150, crop: :fill, class:"rounded tattoo-display" %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
 </div>
 
+<div class="container">
+  <div class="related-tattoos">
+    <h5 class="related-tattoos-h5">Related tattoos:</h5>
+  </div>
+  <div class="d-flex justify-content-between">
+    <% @relate_tattoos.each do |t| %>
+      <div class="tattoo-display-container mt-2">
+        <%= link_to tattoo_path(t) do %>
+          <%= cl_image_tag t.image, height: 150, crop: :fill, class:"rounded tattoo-display" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
