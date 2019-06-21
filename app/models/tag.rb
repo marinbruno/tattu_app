@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  TAG_NAMES = ['Realism', 'Abstract', 'Neo Traditional', 'Blackwork', 'Graffiti', 'Old School', 'Tribal']
+  TAG_NAMES = ['watercolor', 'dotwork', 'blackwork', 'old school', 'abstract', 'geometric', 'realism']
 
   has_many :taggings, dependent: :destroy
   has_many :tattoos, through: :taggings
