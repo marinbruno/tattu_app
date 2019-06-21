@@ -20,7 +20,7 @@ class GetInstagramDataService
       artist_place = Place.new(address: media_object.data.dig('location', 'name'))
       artist.places << artist_place unless artist.location_checker(artist_place.address)
       puts 'Done: place'
-      new_tattoo.tags << Tag.all.sample
+      new_tattoo.associate_tag_to_tattoo(artist)
       puts 'Done: tag'
       new_tattoo.save
       puts 'Done: tattoo'

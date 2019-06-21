@@ -27,7 +27,7 @@ users_array = []
 end
 
 tags_array = []
-tags_names = ['Realism', 'Abstract', 'Neo Traditional', 'Blackwork', 'Graffiti', 'Old School', 'Tribal']
+tags_names = ['watercolor', 'dotwork', 'blackwork', 'old school', 'abstract', 'geometric', 'realism']
 tags_names.each do |tag_name|
   puts 'Creating a new tag....'
   new_tag = Tag.new(name: tag_name)
@@ -38,8 +38,23 @@ end
 usernames_array = ["victoroctaviano",
                   "rodrigotas",
                   "dudublacktattoo",
-                  "Koezukatattoo",
-                  "invitrotattoo"]
+                  "ohjessica_o",
+                  "brisaissa",
+                  "skazxim",
+                  "bricegomes",
+                  "maxvorax",
+                  "pedrozanjos",
+                  "casdecarvalho",
+                  "angelojolies",
+                  "lucasm_tattoo",
+                  "theteabag",
+                  "ubiratanamorim",
+                  "diegoferrink",
+                  "tampatattoo",
+                  "reh_tattoo",
+                  "godo_art",
+                  "mscaranari",
+                  "francisco_lim"]
 artists_array = []
 usernames_array.each do |ig_username|
   puts 'Creating an artist...'
