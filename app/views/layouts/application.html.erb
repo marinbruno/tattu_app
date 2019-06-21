@@ -34,7 +34,9 @@
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
       </div>
-      <div class="main">
+      <% if params[:action] != 'home' %>
+        <div class="main">
+      <% end %>
         <div class="yield-wrap">
           <%= yield %>
         </div>

@@ -1,28 +1,36 @@
+<%= link_to 'Back', artists_path, class: 'btn btn-secondary bkcbtn' %>
 <div class="container ">
   <div class="col-12 mt-3">
-    <div class="p-2 d-flex flex-wrap mb-3 shadow">
-      <div>
+    <div class="p-2 d-flex mb-3 shadow">
+      <div class="m-3">
         <% unless @artist.photo.nil? %>
-          <%= cl_image_tag @artist.photo.photo, height: 200, width: 200, crop: "fill", class: "avatar shadow" %>
+          <%= cl_image_tag @artist.photo.photo, height: 180, width: 180, crop: "fill", class: "avatar shadow" %>
         <% end %>
       </div>
       <div class="ml-3">
         <div>
-          <h1><%= @artist.name %></h1>
-          <p><% unless @artist.business_email.nil? %>
-                <%= image_tag "mail.png" %>
-                <%= @artist.business_email %>
-              <% end %>
-              <form id="contact_form" action="contact/<%= @artist.id %>" method="post" enctype="text/plain">
-                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                <input type="submit" value="Contact the artist" class="btn btn-secondary">
-              </form>
-              <%= link_to "https://www.instagram.com/#{@artist.instagram_username}/?hl=pt-br" do %>
-                @<%= @artist.instagram_username %><
-              <% end %></p>
-          <p> <strong>Description</strong><br>
-          <%= @artist.description %>
-        </p>
+          <div>
+            <h1><%= @artist.name %></h1>
+          </div>
+          <div>
+            <form id="contact_form" action="contact/<%= @artist.id %>" method="post" enctype="text/plain">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <input type="submit" value="Contact the artist" class="btn btn-secondary">
+            </form>
+          </div>
+          <% unless @artist.business_email.nil? %>
+            <div>
+              <%= image_tag "mail.png" %>
+              <%= @artist.business_email %>
+            </div>
+          <% end %>
+          <div>
+            <%= link_to "@#{@artist.instagram_username}", "https://www.instagram.com/#{@artist.instagram_username}/?hl=pt-br", class: "btn btn-secundary p-0" %>
+          </div>
+          <div>
+            <strong>Description</strong>
+            <%= @artist.description %>
+          </div>
         </div>
       </div>
     </div>
@@ -52,7 +60,5 @@
         <% end %>
       </div>
     </div>
-
-    <%= link_to 'Back', artists_path, class: 'mt-3 btn btn-secondary' %>
   </div>
 </div>
