@@ -51,7 +51,6 @@ usernames_array = ["victoroctaviano",
                   "ubiratanamorim",
                   "diegoferrink",
                   "tampatattoo",
-                  "reh_tattoo",
                   "godo_art",
                   "mscaranari",
                   "francisco_lim"]
