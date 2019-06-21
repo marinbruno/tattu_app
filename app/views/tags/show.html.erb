@@ -1,14 +1,20 @@
 <div class="container my-10 ">
 
-  <div class="tags-names text-center">
+  <div class="all-tags text-center d-flex">
     <% @tags.each do |tag| %>
-
         <%= link_to tag_path(tag) do %>
-        <span class="<%= tag.css %> m-3"><%= tag.name %></span>
+        <div class= "tag-card my-3">
+          <div class= "tag-img ">
+            <%= cl_image_tag tag.tattoos.first.image, height: 130, crop: :fill, class: "imagem"%>
+          </div>
+          <div class= "tag-name">
+            <span class="<%= tag.css %> m-3"><%= tag.name.capitalize %></span>
+          </div>
+        </div>
         <% end %>
     <% end %>
   </div>
-  <h1 class= "p-3 "><%= @tag.name %></h1>
+  <h1 class= "p-3 "><%= @tag.name.capitalize %></h1>
   <div class="tattoo-cards justify-content-center">
     <div class="grid-col grid-col--1"></div>
     <div class="grid-col grid-col--2"></div>
