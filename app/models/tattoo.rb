@@ -50,13 +50,32 @@ class Tattoo < ApplicationRecord
       tampatattoo: ["realism"],
       godo_art: ["dotwork", "blackwork"],
       mscaranari: ["dotwork", "blackwork"],
-      francisco_lim: ["watercolor"],
+      francisco_lim: ["watercolor"]
     }
 
     artist_username = artist.instagram_username.parameterize.to_sym
+    puts "------ artist username is #{artist_username}"
     tag_name = tag_tattoo_hash[artist_username]
+    #puts "-------- tag_name is #{tag_name}"
     array_of_tags = Tag.all
-    tag_to_associate = array_of_tags.select { |tag| tag.name == tag_name.sample }
-    tags << tag_to_associate
+
+    # tag_to_associate = array_of_tags.select do |tag|
+    #   tag_sample = tag_name.sample
+    #   puts "-------- tag sample is #{tag_sample} "
+    #   puts "--------- tag name is #{tag.name}"
+    #   tag.name == tag_sample
+
+    #   puts "CHECKING IF TAG IS INCKUDE"
+    #   puts "ANSWER IS #{array_of_tags.map(&:name).include?(tag_sample)}"
+
+    # end
+
+    tag_to_associate = Tag.where(name: tag_name.sample).first
+
+    puts "tag_to_associate is #{tag_to_associate}"
+    self.tags << tag_to_associate
+    puts "tags is now:"
+    puts "----------------"
+    p tags
   end
 end
