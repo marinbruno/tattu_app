@@ -3,7 +3,7 @@ class Tattoo < ApplicationRecord
   pg_search_scope :search_by_all,
                   against: [:description],
                   associated_against: {
-                    artist: :description,
+                    artist: [:description, :instagram_username, :name],
                     user: :name,
                     tags: :name,
                     places: :address
