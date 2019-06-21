@@ -34,8 +34,10 @@
         <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
       </div>
-      <div class="yield-wrap">
-        <%= yield %>
+      <div class="main">
+        <div class="yield-wrap">
+          <%= yield %>
+        </div>
       </div>
       <%= javascript_include_tag 'application' %>
       <%= javascript_pack_tag 'application' %>

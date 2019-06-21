@@ -73,3 +73,18 @@
   color: white;
 }
 }
+
+.dropdown-menu {
+  background-color: black;
+}
+
+.navbar {
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 99;
+}
+
+.main {
+  padding-top: 80px;
+}
